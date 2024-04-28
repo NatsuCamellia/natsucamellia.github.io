@@ -12,6 +12,19 @@ layout: default
   </p>
 </div>
 
+
+<!-- <div class="text-divider"><h2>Pinned</h2></div> -->
+
+{% for post in site.pinned %}
+  <div class="posts-container"> 
+    <a href="{{ site.github.url }}{{ post.url }}" class="post-link">
+      <aside class="date">Pinned</aside>
+      <h3>{{ post.title }}</h3>
+      {{ post.description }}
+    </a>
+  </div>
+{% endfor %}
+
 {% for post in site.posts %}
   {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
   {% capture next_year %}{{ post.next.date | date: '%Y' }}{% endcapture %}

@@ -10,3 +10,7 @@ plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-t
 title:		           'NatsuCamellia'
 description:	       "When camellia blooms in summer."
 author:              'NatsuCamellia'
+
+collections:
+  pinned:
+    output: true
