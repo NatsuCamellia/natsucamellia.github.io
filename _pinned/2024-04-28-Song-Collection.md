@@ -5,6 +5,13 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 19 May 12
+
+> memento - tayori
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/4NVHX3KfBz3PDE3Yz1EgZk?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+tayori 是由作曲團體 Islet 與歌手 Isui 組成的團體，在這之前我就非常喜歡他們合作的音樂。Islet 的音樂風格富有節奏感而不庸俗，Isui 的歌聲如風似水般輕柔，高音部分乾淨穩定。這張專輯 memento 是組成團體 tayori 後的第一張專輯，每首作曲都很優秀，其中「春を待つ」是從以前就非常喜歡、讓我第一次認識 Islet 與 Isui 的歌；「Vivid」中 Isui 唱出富有魅力的感覺；「夢遊」鄉村風的配樂表現出輕快的氛圍。
+
 ## 2024 Week 18 May 5
 
 > 星の名前をつけるとき —— 大原ゆい子
