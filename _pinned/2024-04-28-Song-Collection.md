@@ -5,6 +5,13 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 20 May 19
+
+> 1日は25時間。 - ツルシマアンナ｜「夜のクラゲは泳げない」ED
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2mWkRziSA8Mp9QOMC5OZmh?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+這首歌表現了動畫中主角們追尋夢想的熱情，一天能有 25 小時就好了，歌詞中多次的影射與「夜」的雙關也代表了花音的內心想法。
+
 ## 2024 Week 19 May 12
 
 > memento - tayori
