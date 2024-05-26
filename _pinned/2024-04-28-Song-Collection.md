@@ -5,6 +5,13 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 21 May 26
+
+> はじまりの速度 - 三月のパンタシア
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2aEPTUyTkFBUzmOmpE4yzQ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+穩定的擊鼓、引領情緒的提琴，特別是鋼琴和提琴在橋段的主旋律帶出青春青澀的感覺。
+
 ## 2024 Week 20 May 19
 
 > 1日は25時間。 - ツルシマアンナ｜「夜のクラゲは泳げない」ED
