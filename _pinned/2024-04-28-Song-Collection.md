@@ -5,6 +5,13 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 22 June 2
+
+> 星の奏でる歌 - Duet Ver. - 椎名まゆり（花澤香菜）, 椎名かがり（潘めぐみ）
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2lbFBpRn5ZiZUFugSVDuNA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+平靜的伴奏與緩慢的歌詞，給我一種離別淡去的感覺。
+
 ## 2024 Week 21 May 26
 
 > はじまりの速度 - 三月のパンタシア
