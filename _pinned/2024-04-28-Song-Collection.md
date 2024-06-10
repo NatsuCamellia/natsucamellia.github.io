@@ -5,6 +5,15 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 23 June 9
+
+> Wonder Scale - 倉本千奈（伊藤舞音）
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1KkJAl2nkRGfgzxB5xOqIu?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+一如我喜歡的偶像大師音樂，擁有整組管弦樂團演奏音樂，在 YouTube 的 MV 資訊欄中列出了一排參與管弦樂實錄的演奏者名單。這首歌的管弦樂營造了遊戲中千奈從學園最低位到成為獨當一面的偶像，對於喜歡管弦配樂以及這樣努力向上的故事的我，可以說是生平以來前三的好音樂。
+
+延伸閱讀：[學園偶像大師 Wonder Scale 演唱會分析](https://natsucamellia.github.io/pinned/Wonder-Scale-Live)
+
 ## 2024 Week 22 June 2
 
 > 星の奏でる歌 - Duet Ver. - 椎名まゆり（花澤香菜）, 椎名かがり（潘めぐみ）
