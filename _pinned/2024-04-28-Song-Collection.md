@@ -5,6 +5,13 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 24 June 16
+
+> ホントノワタシ - mona（夏川椎菜）
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/55McbIY23Q17xcj4rs76o7?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+副歌的獨白歌詞充滿自暴自棄的感覺，很喜歡「ごめん良い子じゃなくて」這一句歌詞，歌手的唱腔與伴奏都有充分地推高情緒。
+
 ## 2024 Week 23 June 9
 
 > Wonder Scale - 倉本千奈（伊藤舞音）
