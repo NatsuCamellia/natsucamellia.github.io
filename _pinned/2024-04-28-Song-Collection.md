@@ -5,6 +5,13 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 25 June 23
+
+> 白線 - 葛城リーリヤ（花岩香奈）
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1JvuQ6qCtdvtDGhf7oTo2q?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+節奏感強烈，鼓的速度及提琴的圓滑奏讓前進的節奏非常流暢。
+
 ## 2024 Week 24 June 16
 
 > ホントノワタシ - mona（夏川椎菜）
