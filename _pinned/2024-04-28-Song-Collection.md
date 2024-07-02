@@ -5,6 +5,12 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 26 June 30
+
+> CONTINUE...? - 涼風青葉（高田憂希）
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1nBY6llJhKTIah5L5R6TjZ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
 ## 2024 Week 25 June 23
 
 > 白線 - 葛城リーリヤ（花岩香奈）
