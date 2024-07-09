@@ -5,6 +5,14 @@ categories: Music
 description: "每週日記錄好音樂"
 ---
 
+## 2024 Week 27 July 7
+
+> 戦線のリアリズム - Mako Nena
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1UvNIod8kXewQhR8BI7BSd?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+不規則的節奏與特別的曲調營造出戰場的緊張氣氛。
+
 ## 2024 Week 26 June 30
 
 > CONTINUE...? - 涼風青葉（高田憂希）
