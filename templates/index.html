@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ config.title }} | {{ config.description }}
+{% endblock %}
+
+{% block content %}
+    <aside class="categories-link"><a href="{{ config.base_url }}categories">→ Categories</a></aside>
+    <h1>NatsuCamellia</h1>
+    <div class="site-intro">
+        <p>
+        你好，歡迎來到我的 Blog。我是夏玉茗，一名正在念資訊工程的大學生，閒暇的時間我喜歡閱讀、寫作、研究軟體，也喜歡嘗試新的事物。
+        我會在這裡分享我在學習、生活中的點滴，也會分享一些技術文章。
+        </p>
+    </div>
+
+    {% for year, posts in section.pages | group_by(attribute="year") %}
+        <div class="text-divider"><h2>{{ year }}</h2></div>
+        {% for post in posts %}
+        <a href="{{ post.permalink }}" class="post-link">
+            <div class="posts-container"> 
+                <aside class="date">{{ post.date | date(format="%b %d") }}</aside>
+                <h3>{{ post.title }}</h3>
+                {{ post.description }}
+            </div>
+        </a>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

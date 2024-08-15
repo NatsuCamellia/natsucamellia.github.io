@@ -1,0 +1,39 @@
+/*
+  Site container
+*/
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 680px;
+}
+
+.content-container {
+  margin-bottom: 4rem;
+}
+
+@media (max-width: $container-responsive-width) {
+  .container {
+    width: 90vw;
+  }
+}
+
+/*
+  Header
+*/
+
+header {
+  margin-bottom: 2rem;
+}
+
+figcaption {
+  font-size: 0.8rem;
+}
+
+.categories-link {
+  float: right;
+}
+
+.home-link {
+  float: right;
+}
