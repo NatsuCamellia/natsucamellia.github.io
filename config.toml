@@ -1,14 +1,17 @@
 # The URL the site will be built for
 base_url = "https://natsucamellia.github.io/"
-
 title = "NatsuCamellia"
 description = "When camellia blooms in summer."
+author = "NatsuCamellia"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
+
+generate_feeds = true
+default_language = "zh-tw"
 
 taxonomies = [
     {name = "categories", feed = true}
