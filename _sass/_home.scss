@@ -6,11 +6,6 @@
   float: right;
 }
 
-.categories-link a {
-  color: $main-color;
-  text-decoration: none;
-}
-
 /*
   Posts
 */
@@ -53,7 +48,12 @@
 
 .post-link h3 {
   color: $text-color;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+.post-link:hover {
+  text-decoration: none;
+  color: $link-color;
 }
 
 .date {

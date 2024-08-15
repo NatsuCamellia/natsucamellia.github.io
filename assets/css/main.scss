@@ -6,6 +6,7 @@ $serif-font-family:      "Noto Serif TC", "Songti TC", serif;
 $code-font-family:       monospace;
 
 $main-color:             #e5724c;
+$container-color:        #ffdbd0;
 
 $dark-gray-color:        #333;
 $gray-color:             #777;
@@ -15,8 +16,7 @@ $gray-color:             #777;
 $body-color:             $main-color;
 $text-color:             $dark-gray-color;
 $description-color:      $gray-color;
-$link-color:             $text-color;
-$link-hover-color:       $main-color;
+$link-color:             $main-color;
 
 $code-background-color:   #f5f5f5;
 
