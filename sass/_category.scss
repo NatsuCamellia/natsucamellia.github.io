@@ -1,9 +1,9 @@
-.category-container {
+.category-item {
     padding-inline-start: 1rem;
-    border-inline-start: 1px solid $main-color;
+    border-inline-start: 3px solid $main-color;
     transition: 0.1s;
 
     &:hover {
-        border-inline-start-width: 3px;
+        border-inline-start-width: 6px;
     }
 }
