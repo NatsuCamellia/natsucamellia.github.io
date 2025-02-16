@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-tw">
+    <title>NatsuCamellia - Tutorial</title>
+    <subtitle>When camellia blooms in summer.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://natsucamellia.github.io/categories/tutorial/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-09T00:00:00+00:00</updated>
+    <id>https://natsucamellia.github.io/categories/tutorial/atom.xml</id>
+    <entry xml:lang="zh-tw">
+        <title>客製化順手的開發環境（2）——終端機與 Shell</title>
+        <published>2025-02-09T00:00:00+00:00</published>
+        <updated>2025-02-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/development-environment-2/"/>
+        <id>https://natsucamellia.github.io/development-environment-2/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/development-environment-2/">&lt;h2 id=&quot;zhong-duan-ji-yu-shell&quot;&gt;終端機與 Shell&lt;&#x2F;h2&gt;
+&lt;p&gt;終端機與 shell 是寫程式時不可或缺的工具，兩者關係緊密卻是兩個不同的軟體。終端機是用來裝 shell 的容器，可以將使用者的輸入傳送給 shell，也能夠將 shell 的輸出顯示在使用者的面前。而 shell 則是實際上執行工作的軟體，負責執行如 &lt;code&gt;ls&lt;&#x2F;code&gt;、&lt;code&gt;cd&lt;&#x2F;code&gt; 一類的指令，讓使用者能夠和作業系統互動。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhong-duan-ji&quot;&gt;終端機&lt;&#x2F;h2&gt;
+&lt;p&gt;現代的作業系統一般而言都會自帶終端機，在 macOS 上有 Terminal、Windows 上有傳統的 cmd 與現代的 PowerShell，而 Linux 上有 GNOME Terminal 等不同的終端機。一般來說這些終端機的功能就已經足夠強大，能夠直接用來做任何想做的事了，不過市面上也有推出更多功能的終端機，例如近年推出的 &lt;a href=&quot;https:&#x2F;&#x2F;www.warp.dev&quot;&gt;Warp&lt;&#x2F;a&gt; 終端機，配有現代化的圖形界面，也搭配了這幾年流行的 AI，讓使用者可以在終端機內和語言模型對話。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-2&#x2F;.&#x2F;warp.svg&quot; alt=&quot;Warp&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;不過因為我覺得 macOS 已經很好用了，而且不需要安裝額外的軟體，因此這篇文章著重介紹如何客製化 macOS 內建的終端機 Terminal。&lt;&#x2F;p&gt;
+&lt;p&gt;首先打開 Terminal.app 並按下 &lt;code&gt;Cmd ,&lt;&#x2F;code&gt; 打開設定，選取「描述檔」分頁，可以看到內建多個預設的設定，不過讓我們來客製化一個自己喜歡的設定。點擊左下角的 + 號新增一個設定檔後，再按下方的「預設值」，這樣以後新開的終端機視窗都會預設使用新的設定檔。接著看看設定檔裡面的設定，我認為最需要調整的是以下設定：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;背景顏色：我個人把背景顏色調成黑色，並且將不透明度調成 70%，這樣就會有透明玻璃的效果，美觀又可以看到終端機後的文字。&lt;&#x2F;li&gt;
+&lt;li&gt;字體：下一節會介紹字體，我個人使用 JetBrains Mono Regular 字體，並且字體大小調整為 18 點，我認為終端機的字體要大一些，使用起來才會比較有效率也比較不傷眼。需要注意的是，如果如果使用的字體在顯示上有鋸齒的話，可以勾選「柔邊處理文字」讓文字更圓滑。&lt;&#x2F;li&gt;
+&lt;li&gt;游標：勾選「閃爍游標」可以讓終端機生動些。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;以上就是 macOS Terminal 簡單的設定，用這些簡單的設定就可以讓終端機「外觀」好看不少，如果需要好看到「骨子」裡，那麼可以依照後續章節設定 shell。另外介紹一組和外觀有密切關係的快捷鍵，每當使用外接螢幕時，終端機的文字大小就可能會顯得過大或過小，這時可以使用以下快捷鍵調整：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Cmd +&lt;&#x2F;code&gt;：放大字體&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;Cmd -&lt;&#x2F;code&gt;：縮小字體&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;Cmd 0&lt;&#x2F;code&gt;：重設字體縮放&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;zi-ti&quot;&gt;字體&lt;&#x2F;h2&gt;
+&lt;p&gt;寫程式時最「無所不在」的元素就是文字了，因此一套順眼的字體能讓我們寫程式的心情好上不少。我在這裡介紹兩個開源字體，強烈建議讀者點進連結看個幾眼，第一個是 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tonsky&#x2F;FiraCode&quot;&gt;Fira Code&lt;&#x2F;a&gt;，這是我前期所使用的字體，看起來圓滾滾的很可愛，也是我第一個使用的外部字體；另一個字體是我目前正在使用的 &lt;a href=&quot;https:&#x2F;&#x2F;www.jetbrains.com&#x2F;lp&#x2F;mono&#x2F;&quot;&gt;JetBrains Mono&lt;&#x2F;a&gt;，一個由 IDE 開發公司 JetBrains 所設計的開源字體，這個字體比起 Fira Code 較為細長，省略了大部分不必要的細節，因此看起來更加整潔。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-2&#x2F;.&#x2F;firacode.svg&quot; alt=&quot;Fira Code&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-2&#x2F;.&#x2F;jetbrains-mono.png&quot; alt=&quot;JetBrains Mono&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;這兩個適合用來寫程式的字體的特色是連字（Ligature），這個功能會將某些相連的字元連在一起，以 Fira Code 為例，它不只支援常見的 &lt;code&gt;==&lt;&#x2F;code&gt; 和 &lt;code&gt;++&lt;&#x2F;code&gt;，還支援各種程式語言的特殊字元組合：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-2&#x2F;.&#x2F;ligatures.png&quot; alt=&quot;Ligature&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;要使用這些字體我們需要先將字體安裝到電腦上，以 JetBrains Mono 為例，先到字體官網下載字體，解壓縮後打開 &lt;code&gt;&#x2F;font&#x2F;variable&lt;&#x2F;code&gt; 內的所有字體並安裝即可。安裝完成後，我們就可以在電腦的各種程式中使用該字體，例如想要將字體用在 Terminal 中，我們打開 Terminal 的設定並選擇等寬字 JetBrains Mono，儲存設定就可以了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shell&quot;&gt;Shell&lt;&#x2F;h2&gt;
+&lt;p&gt;最後要介紹的是 shell，不同的作業系統內建的 shell 可能不同，但是 Unix 系統如 macOS、Linux 的 shell 在功能上都大同小異，因此選擇自己最順手的 shell 即可，而 macOS 內建的 shell 是 Zsh，因此本節介紹 zsh 的設定。&lt;&#x2F;p&gt;
+&lt;p&gt;首先是 shell 的 rc 檔，Zsh 的 rc 檔位於 &lt;code&gt;~&#x2F;.zshrc&lt;&#x2F;code&gt;，Zsh 開啟時會執行一次裡面所有的指令，可以用於設定環境變數或是 shell 的初始化設定。&lt;&#x2F;p&gt;
+&lt;p&gt;接著是 shell 的主題，搜尋「zsh themes」即可在網路上找到各式各樣的主題，我從以前用到現在的主題是 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;romkatv&#x2F;powerlevel10k&quot;&gt;Powerlevel10k&lt;&#x2F;a&gt;，是一個很熱門的主題。安裝主題可以透過我在&lt;a href=&quot;&#x2F;development-environment-1&#x2F;&quot;&gt;上一篇文章&lt;&#x2F;a&gt;提到的 Homebrew，只需要使用指令安裝即可：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;brew install powerlevel10k
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;因為每次開啟 Zsh 我們都希望能夠使用這個主題，所以我們需要將設定寫入 &lt;code&gt;.zshrc&lt;&#x2F;code&gt;，打開 &lt;code&gt;.zshrc&lt;&#x2F;code&gt; 寫入以下指令後儲存：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;source $(brew --prefix)&#x2F;share&#x2F;powerlevel10k&#x2F;powerlevel10k.zsh-theme
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;這會讓 Zsh 在啟動時運行 Powerlevel10k 的初始化腳本，下次打開 Zsh 後就會自動開啟設定引導，完成初次設定就可以了，若想要重新設定可以使用 &lt;code&gt;p10k configure&lt;&#x2F;code&gt; 指令。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>客製化順手的開發環境（1）——套件管理軟體</title>
+        <published>2025-02-02T00:00:00+00:00</published>
+        <updated>2025-02-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/development-environment-1/"/>
+        <id>https://natsucamellia.github.io/development-environment-1/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/development-environment-1/">&lt;h2 id=&quot;tao-jian-guan-li-ruan-ti-homebrew&quot;&gt;套件管理軟體 - Homebrew&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-1&#x2F;.&#x2F;homebrew.png&quot; alt=&quot;Homebrew&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;剛拿到一台電腦要建立開發環境之前，第一步就是安裝日後必要的軟體與套件。在 macOS 上常見的套件管理軟體是 &lt;a href=&quot;https:&#x2F;&#x2F;brew.sh&quot;&gt;Homebrew&lt;&#x2F;a&gt; 與 &lt;a href=&quot;https:&#x2F;&#x2F;www.macports.org&quot;&gt;MacPorts&lt;&#x2F;a&gt;，而兩者之中&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;MacOS&#x2F;comments&#x2F;1cmiq5w&#x2F;which_package_manager_do_you_use&#x2F;&quot;&gt;最多人使用的是 Homebrew&lt;&#x2F;a&gt;，也是我目前正在使用的套件管理軟體，因此本節以 Homebrew 為主要介紹對象。對於 Linux 系統只需要使用各個 Linux distro 的內建套件管理軟體即可，因為內建軟體的相容度一般來說會比較高，所以不推薦再使用其他套件管理軟體。&lt;&#x2F;p&gt;
+&lt;p&gt;幾乎所有有關程式開發的函式庫、軟體都可以在 Homebrew 上安裝，因此每次我要安裝函式庫時第一步就是先檢查 Homebrew 上有沒有該函式庫，把所有東西都用 Homebrew 管理真的很舒爽。安裝 Homebrew 很容易，只需要到 &lt;a href=&quot;https:&#x2F;&#x2F;brew.sh&quot;&gt;Homebrew 的網站&lt;&#x2F;a&gt;上複製安裝指令，並貼上至終端機執行即可，記得下載完後要在輸出文字中找到 &lt;code&gt;Next steps&lt;&#x2F;code&gt;，照做完成 &lt;code&gt;PATH&lt;&#x2F;code&gt; 設定就算是安裝成功了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-zhuang-tao-jian&quot;&gt;安裝套件&lt;&#x2F;h2&gt;
+&lt;p&gt;接著以安裝 GCC 為例來展示 Homebrew 的常見用法，我們先搜尋在 Homebrew 上有哪些安裝選項：（我已經安裝好 &lt;code&gt;gcc&lt;&#x2F;code&gt; 了所以旁邊有個勾）&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;讀者可能會有疑問，在 macOS 上可以使用 &lt;code&gt;gcc&lt;&#x2F;code&gt; 指令來編譯 C 程式，為什麼還要安裝 GCC？這是因為 macOS 中的 &lt;code&gt;gcc&lt;&#x2F;code&gt; 指令預設指向 Clang 編譯器（macOS 因為 GCC 條款問題而自行開發的 C 編譯器），如果使用 &lt;code&gt;gcc --version&lt;&#x2F;code&gt; 指令就能觀察到這一點。下方會告訴讀者如何將 &lt;code&gt;gcc&lt;&#x2F;code&gt; 指令指向 GCC 而不是 Clang。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;brew search gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-1&#x2F;.&#x2F;search.png&quot; alt=&quot;search&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;這時候會看到很多輸出訊息，我來解釋這些訊息是什麼意思。&lt;code&gt;Formulae&lt;&#x2F;code&gt; 中的套件通常是編譯而成、不帶有 GUI 的 CLI 軟體，如 Python、GCC；而 &lt;code&gt;Casks&lt;&#x2F;code&gt; 中的套件通常是透過官方網站下載的安裝包安裝而成的 GUI 軟體，如 WireShark（沒錯，WireShark 可以透過 Homebrew 安裝）。&lt;&#x2F;p&gt;
+&lt;p&gt;從中可以看到 &lt;code&gt;gcc&lt;&#x2F;code&gt; 以及標有版本號的 &lt;code&gt;gcc@13&lt;&#x2F;code&gt; 等套件，&lt;code&gt;gcc&lt;&#x2F;code&gt; 會指向最新版本的 GCC，未來如果 GCC 更新了 GCC 15、GCC 16，&lt;code&gt;gcc&lt;&#x2F;code&gt; 也會自動更新上去，而 &lt;code&gt;gcc@13&lt;&#x2F;code&gt; 就只會停在 GCC 13。&lt;&#x2F;p&gt;
+&lt;p&gt;最後我們確認一下 &lt;code&gt;gcc&lt;&#x2F;code&gt; 是不是我們所期望的 GCC，使用指令查看套件訊息：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;brew info gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-1&#x2F;.&#x2F;info.png&quot; alt=&quot;info&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;在輸出中可以看到套件的完整名稱 GNU compiler collection、官方網站連結、來源以及授權條款等資訊，也可以看到最近的總安裝次數。決定好要安裝的套件後，使用指令安裝該套件：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;brew install gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;此時 GCC 就安裝成功了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;homebrew-an-zhuang-yuan-li&quot;&gt;Homebrew 安裝原理&lt;&#x2F;h2&gt;
+&lt;p&gt;使用 &lt;code&gt;brew list&lt;&#x2F;code&gt; 可以看到目前已經安裝的套件以及預設安裝的套件，其中應該包含 &lt;code&gt;gcc&lt;&#x2F;code&gt;：（我的套件很多沒辦法完整截圖，&lt;code&gt;gcc&lt;&#x2F;code&gt; 在更下方）&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;brew list
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-1&#x2F;.&#x2F;list.png&quot; alt=&quot;list&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;如果要查看一個套件中的所有可執行檔：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;brew list gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;development-environment-1&#x2F;.&#x2F;list_gcc.png&quot; alt=&quot;list gcc&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;此時會輸出許多可執行檔，而其中我想要使用的 &lt;code&gt;gcc&lt;&#x2F;code&gt; 是：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;&#x2F;opt&#x2F;homebrew&#x2F;Cellar&#x2F;gcc&#x2F;14.2.0_1&#x2F;bin&#x2F;gcc-14
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Homebrew 安裝完套件後，會將套件的指令放在 &lt;code&gt;&#x2F;opt&#x2F;homebrew&#x2F;bin&lt;&#x2F;code&gt; 中，並指向真正的位置。例如我想使用的 &lt;code&gt;gcc-14&lt;&#x2F;code&gt; 就會位於 &lt;code&gt;&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;gcc-14&lt;&#x2F;code&gt; 並指向 &lt;code&gt;&#x2F;opt&#x2F;homebrew&#x2F;Cellar&#x2F;gcc&#x2F;14.2.0_1&#x2F;bin&#x2F;gcc-14&lt;&#x2F;code&gt;，使用以下指令可以驗證這一點：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;ls -l &#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;gcc-14
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; Output
+&lt;&#x2F;span&gt;&lt;span&gt;... &#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;gcc-14 -&amp;gt; ..&#x2F;Cellar&#x2F;gcc&#x2F;14.2.0_1&#x2F;bin&#x2F;gcc-14
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;而 &lt;code&gt;&#x2F;opt&#x2F;homebrew&#x2F;bin&lt;&#x2F;code&gt; 在安裝 Homebrew 時就已經加入 &lt;code&gt;PATH&lt;&#x2F;code&gt; 環境變數中了，所以我們只需要使用 &lt;code&gt;gcc-14&lt;&#x2F;code&gt; 就可以用 GCC 編譯 C 程式了。&lt;&#x2F;p&gt;
+&lt;p&gt;簡單整理一下，當我們使用 &lt;code&gt;gcc-14&lt;&#x2F;code&gt; 指令時，作業系統會在 &lt;code&gt;PATH&lt;&#x2F;code&gt; 中尋找 &lt;code&gt;gcc-14&lt;&#x2F;code&gt;，此時作業系統在 &lt;code&gt;PATH&lt;&#x2F;code&gt; 中的 &lt;code&gt;&#x2F;opt&#x2F;homebrew&#x2F;bin&lt;&#x2F;code&gt; 找到了 &lt;code&gt;gcc-14&lt;&#x2F;code&gt; 於是執行它，而這個 &lt;code&gt;gcc-14&lt;&#x2F;code&gt; 實際上指向 &lt;code&gt;&#x2F;opt&#x2F;homebrew&#x2F;Cellar&#x2F;gcc&#x2F;14.2.0_1&#x2F;bin&#x2F;gcc-14&lt;&#x2F;code&gt;，所以被執行的是後者的 &lt;code&gt;gcc-14&lt;&#x2F;code&gt; 也就是真正安裝的 &lt;code&gt;gcc-14&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;gcc-14
+&lt;&#x2F;span&gt;&lt;span&gt; ↓ (OS find gcc-14 in PATH)
+&lt;&#x2F;span&gt;&lt;span&gt;PATH
+&lt;&#x2F;span&gt;&lt;span&gt; ↓ (OS found gcc-14)
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;gcc-14
+&lt;&#x2F;span&gt;&lt;span&gt; ↓ (Links to real gcc-14)
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;opt&#x2F;homebrew&#x2F;Cellar&#x2F;gcc&#x2F;14.2.0_1&#x2F;bin&#x2F;gcc-14
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;rang-gcc-zhi-xiang-zhen-zheng-de-gcc&quot;&gt;讓 GCC 指向真正的 GCC&lt;&#x2F;h2&gt;
+&lt;p&gt;現在如果使用 &lt;code&gt;gcc --version&lt;&#x2F;code&gt;，輸出依舊是 macOS 的內建編譯器 Clang。有不同方法可以將 &lt;code&gt;gcc&lt;&#x2F;code&gt; 指向我們剛安裝的 GCC，我這裡使用最溫和而不破壞環境的方法：&lt;code&gt;alias gcc=gcc-14&lt;&#x2F;code&gt;，讓 shell 在讀取到 &lt;code&gt;gcc&lt;&#x2F;code&gt; 指令時自動轉換成 &lt;code&gt;gcc-14&lt;&#x2F;code&gt;，如果想要取消的話，使用 &lt;code&gt;unalias gcc&lt;&#x2F;code&gt; 即可。如果要使用 Clang 編譯器的話可以使用 &lt;code&gt;clang&lt;&#x2F;code&gt; 指令。&lt;&#x2F;p&gt;
+&lt;p&gt;其實安裝的 GCC 中也包括了 G++，可以使用相同的方法將 &lt;code&gt;g++&lt;&#x2F;code&gt; 指向 &lt;code&gt;g++-14&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chang-yong-zhi-ling&quot;&gt;常用指令&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;brew search gcc&lt;&#x2F;code&gt;：搜尋名稱包含 &lt;code&gt;gcc&lt;&#x2F;code&gt; 的所有套件&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew info gcc&lt;&#x2F;code&gt;：查看套件 &lt;code&gt;gcc&lt;&#x2F;code&gt; 的訊息&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew install gcc&lt;&#x2F;code&gt;：安裝 &lt;code&gt;gcc&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew uninstall gcc&lt;&#x2F;code&gt;：解除安裝 &lt;code&gt;gcc&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew list&lt;&#x2F;code&gt;：列出已安裝的套件&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew list gcc&lt;&#x2F;code&gt;：列出 &lt;code&gt;gcc&lt;&#x2F;code&gt; 的可執行檔&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew update&lt;&#x2F;code&gt;：更新 Homebrew 套件資料庫&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew upgrade&lt;&#x2F;code&gt;：更新所有套件&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew upgrade gcc&lt;&#x2F;code&gt;：更新 &lt;code&gt;gcc&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>在 Arm64 Mac 上編譯 Aseprite</title>
+        <published>2024-01-24T00:00:00+00:00</published>
+        <updated>2024-01-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/compiling-aseprite-on-arm64-mac/"/>
+        <id>https://natsucamellia.github.io/compiling-aseprite-on-arm64-mac/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/compiling-aseprite-on-arm64-mac/">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.aseprite.org&quot;&gt;Aseprite&lt;&#x2F;a&gt; 是一款專門為像素畫設計的繪圖軟體，功能簡單強大，在像素畫領域中非常有名，深受許多創作者喜愛。這款軟體在 Aseprite 官方網站以 19.99 美金販售，也可在 Steam 上以較便宜價格約 300 元新台幣購買。&lt;&#x2F;p&gt;
+&lt;p&gt;然而，Aseprite 是一款開源軟體，Aseprite 在 &lt;a href=&quot;https:&#x2F;&#x2F;www.aseprite.org&#x2F;faq&#x2F;#if-aseprite-source-code-is-available-how-is-that-you-are-selling-it&quot;&gt;FAQ&lt;&#x2F;a&gt; 中提到：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Aseprite started being open source since its very beginning in 2001, and we were happy with that until &lt;a href=&quot;http:&#x2F;&#x2F;dev.aseprite.org&#x2F;post&#x2F;149797781837&#x2F;new-source-code-license&quot;&gt;August 2016&lt;&#x2F;a&gt;. &lt;strong&gt;Now you can still download its source code, compile it, and use it for your personal purposes.&lt;&#x2F;strong&gt; You can &lt;a href=&quot;https:&#x2F;&#x2F;www.aseprite.org&#x2F;faq&#x2F;#can-i-sell-graphics-created-with-aseprite&quot;&gt;make commercial art&#x2F;assets with it too&lt;&#x2F;a&gt;. The only restriction in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aseprite&#x2F;aseprite&#x2F;blob&#x2F;master&#x2F;EULA.txt&quot;&gt;Aseprite EULA&lt;&#x2F;a&gt; is that &lt;a href=&quot;https:&#x2F;&#x2F;www.aseprite.org&#x2F;faq&#x2F;#can-i-redistribute-aseprite&quot;&gt;you cannot redistribute Aseprite&lt;&#x2F;a&gt; to third parties.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;內容大意是使用者可以自行使用原始碼編譯程式，且使用 Aseprite 創作的畫作可以用作商業用途，唯一限制是不能分享編譯後的軟體。在 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aseprite&#x2F;aseprite&quot;&gt;Aseprite GitHub&lt;&#x2F;a&gt; 中有清楚詳細的編譯教學，雖然對於一般人而言還是需要不少努力才能完成編譯，不過對於資訊背景的人可說是保母級教學了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bian-yi-bu-zou&quot;&gt;編譯步驟&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下資訊皆為撰文日期（2024 年 1 月 24 日）所得&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝編譯時需要的共通套件&lt;&#x2F;li&gt;
+&lt;li&gt;安裝 Mac 所需的套件&lt;&#x2F;li&gt;
+&lt;li&gt;編譯&lt;&#x2F;li&gt;
+&lt;li&gt;做成可以放在啟動台的應用程式方便使用&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;an-zhuang-gong-tong-tao-jian&quot;&gt;安裝共通套件&lt;&#x2F;h2&gt;
+&lt;p&gt;需要的共通套件有：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;CMake &lt;code&gt;3.16+&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Ninja&lt;&#x2F;li&gt;
+&lt;li&gt;Skia &lt;code&gt;aseprite-m102&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;cmake&quot;&gt;CMake&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cmake.org&quot;&gt;CMake&lt;&#x2F;a&gt; 是用來建置 C++ 程式的工具。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;cmake --version&lt;&#x2F;code&gt; 檢查電腦中是否已經安裝版本 3.16 以上的 CMake。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew install cmake&lt;&#x2F;code&gt; 從 Homebrew 安裝 CMake。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;ninja&quot;&gt;Ninja&lt;&#x2F;h3&gt;
+&lt;p&gt;Ninja 是由 Google 員工 Evan Martin 開發的小型建置系統。 Ninja 注重速度，被設計為盡可能快地運行。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ninja --version&lt;&#x2F;code&gt; 檢查電腦中是否已經安裝 Ninja。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;brew install ninja&lt;&#x2F;code&gt; 從 Homebrew 安裝 Ninja。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;skia&quot;&gt;Skia&lt;&#x2F;h3&gt;
+&lt;p&gt;Skia 是 Aseprite 的其中一個套件，依賴關係為 Aseprite &amp;gt; Laf &amp;gt; Skia。本次安裝所需的 Skia 版本為 &lt;code&gt;aseprite-m102&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;從 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aseprite&#x2F;skia&#x2F;releases&quot;&gt;Releases · aseprite&#x2F;skia&lt;&#x2F;a&gt; 下載已經建置好的套件（&lt;code&gt;Skia-macOS-Release-arm64.zip&lt;&#x2F;code&gt;）。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;mkdir -p $HOME&#x2F;deps&#x2F;skia&lt;&#x2F;code&gt; 創建資料夾。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;unzip Skia-macOS-Release-arm64.zip -d $HOME&#x2F;deps&#x2F;skia&lt;&#x2F;code&gt; 解壓縮。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;an-zhuang-mac-suo-xu-tao-jian&quot;&gt;安裝 Mac 所需套件&lt;&#x2F;h2&gt;
+&lt;p&gt;需要的 Mac 套件有：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Xcode&lt;&#x2F;li&gt;
+&lt;li&gt;MacOS SDK&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;從 App Store 下載 Xcode 並開啟，按照指示安裝 MacOS SDK 即可。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bian-yi&quot;&gt;編譯&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;xia-zai-yuan-shi-ma&quot;&gt;下載原始碼&lt;&#x2F;h3&gt;
+&lt;p&gt;找到一個合適的資料夾後下載原始碼。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --recursive&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;github.com&#x2F;aseprite&#x2F;aseprite.git
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;--recursive&lt;&#x2F;code&gt; 會一併下載在其他 repo 的 dependency。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;chuang-jian-jian-zhi-zi-liao-jia&quot;&gt;創建建置資料夾&lt;&#x2F;h3&gt;
+&lt;p&gt;創建建置資料夾的目的是：如果想要重新建置程式的話，只需要清空建置資料夾即可。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; aseprite
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mkdir&lt;&#x2F;span&gt;&lt;span&gt; build
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;kai-shi-jian-zhi&quot;&gt;開始建置&lt;&#x2F;h3&gt;
+&lt;p&gt;進入建置資料夾：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; build
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用 CMake 建置：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cmake &lt;&#x2F;span&gt;&lt;span&gt;\
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DCMAKE_BUILD_TYPE&lt;&#x2F;span&gt;&lt;span&gt;=RelWithDebInfo \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DCMAKE_OSX_ARCHITECTURES&lt;&#x2F;span&gt;&lt;span&gt;=arm64 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DCMAKE_OSX_DEPLOYMENT_TARGET&lt;&#x2F;span&gt;&lt;span&gt;=11.0 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DCMAKE_OSX_SYSROOT&lt;&#x2F;span&gt;&lt;span&gt;=&#x2F;Applications&#x2F;Xcode.app&#x2F;Contents&#x2F;Developer&#x2F;Platforms&#x2F;MacOSX.platform&#x2F;Developer&#x2F;SDKs&#x2F;MacOSX.sdk \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DLAF_BACKEND&lt;&#x2F;span&gt;&lt;span&gt;=skia \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DSKIA_DIR&lt;&#x2F;span&gt;&lt;span&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;deps&#x2F;skia \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DSKIA_LIBRARY_DIR&lt;&#x2F;span&gt;&lt;span&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;deps&#x2F;skia&#x2F;out&#x2F;Release-arm64 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DSKIA_LIBRARY&lt;&#x2F;span&gt;&lt;span&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;deps&#x2F;skia&#x2F;out&#x2F;Release-arm64&#x2F;libskia.a \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -DPNG_ARM_NEON&lt;&#x2F;span&gt;&lt;span&gt;:STRING=on \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  -G&lt;&#x2F;span&gt;&lt;span&gt; Ninja \
+&lt;&#x2F;span&gt;&lt;span&gt;  ..
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;其中有一些參數要注意：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;DCMAKE_OSX_SYSROOT&lt;&#x2F;code&gt;：MacOS SDK 的路徑。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;DSKIA_*&lt;&#x2F;code&gt;：Skia 的解壓縮路徑如果有變更，參數也要修改。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;..&lt;&#x2F;code&gt;：不是省略，是父目錄的意思，因為程式碼都在父目錄。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;使用 Ninja 建置：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ninja&lt;&#x2F;span&gt;&lt;span&gt; aseprite
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zuo-cheng-ying-yong-cheng-shi&quot;&gt;做成應用程式&lt;&#x2F;h2&gt;
+&lt;p&gt;建置完後，打開 &lt;code&gt;aseprite&#x2F;build&#x2F;bin&#x2F;aseprite&lt;&#x2F;code&gt; 就可以使用 Aseprite 了。為了讓我們編譯的 Aseprite 更有應用程式的感覺，我們可以將這些檔案打包成一個 &lt;code&gt;.app&lt;&#x2F;code&gt; 檔，和啟動台裡面的程式一樣美觀又方便。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;建立資料夾 &lt;code&gt;Aseprite.app&lt;&#x2F;code&gt;，若跳出視窗，選擇將副檔名加入結尾。&lt;&#x2F;li&gt;
+&lt;li&gt;把 &lt;code&gt;aseprite&#x2F;build&#x2F;bin&lt;&#x2F;code&gt; 內的所有檔案加入 &lt;code&gt;Aseprite.app&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;右鍵 &lt;code&gt;Aseprite.app&lt;&#x2F;code&gt; 取得資訊。&lt;&#x2F;li&gt;
+&lt;li&gt;把 &lt;code&gt;aseprite&#x2F;data&#x2F;icons&#x2F;ase.ico&lt;&#x2F;code&gt; 這個圖示拉到 &lt;code&gt;Aseprite.app&lt;&#x2F;code&gt; 資訊框左上角的圖示欄位，以更換圖示。&lt;&#x2F;li&gt;
+&lt;li&gt;最後把 &lt;code&gt;Aseprite.app&lt;&#x2F;code&gt; 放進應用程式資料夾，即可從啟動台中開啟。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Java Thread | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Java Thread
+    </h1>
+    <p class="post-date">
+      Published on 2023-03-04
+    </p>
+  </header>
+  <article>
+    <blockquote>
+<p>當本文使用 Thread 時，指的是 Thread 這個類別，而非執行緒。</p>
+</blockquote>
+<p>執行緒是 Java 中重要的一環，可以讓我們的程式分成不同部分（看起來）同時運行。建立執行緒有兩種方式，第一種是直接繼承 Thread ，而另一種則是實作 Runnable 。</p>
+<h2 id="ji-cheng-thread">繼承 Thread</h2>
+<p>繼承 Thread 的話只要覆寫 run() 方法就可以了，可以在 run() 中放入任何想要做的事。
+例如我想要印出一些數字，並在之間 sleep() 一秒鐘：</p>
+<pre data-lang="java" style="background-color:#eff1f5;color:#4f5b66;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public class </span><span style="color:#d08770;">MyThread </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">Thread </span><span style="color:#343d46;">{ 
+</span><span style="color:#343d46;">    @</span><span style="color:#bf616a;">Override  
+</span><span style="color:#343d46;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#343d46;">() {  
+</span><span style="color:#343d46;">        </span><span style="color:#b48ead;">for </span><span style="color:#343d46;">(</span><span style="color:#b48ead;">int</span><span style="color:#343d46;"> i </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#343d46;">; i </span><span>&lt; </span><span style="color:#d08770;">5</span><span style="color:#343d46;">; i</span><span>++</span><span style="color:#343d46;">) {  
+</span><span style="color:#343d46;">            </span><span style="color:#d08770;">System</span><span style="color:#343d46;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#343d46;">(i);
+</span><span style="color:#343d46;">  
+</span><span style="color:#343d46;">            </span><span style="color:#b48ead;">try </span><span style="color:#343d46;">{  
+</span><span style="color:#343d46;">                </span><span style="color:#bf616a;">sleep</span><span style="color:#343d46;">(</span><span style="color:#d08770;">1000</span><span style="color:#343d46;">);  
+</span><span style="color:#343d46;">            } </span><span style="color:#b48ead;">catch </span><span style="color:#343d46;">(</span><span style="color:#d08770;">InterruptedException </span><span style="color:#bf616a;">e</span><span style="color:#343d46;">) {  
+</span><span style="color:#343d46;">                </span><span style="color:#b48ead;">throw new </span><span style="color:#d08770;">RuntimeException</span><span style="color:#343d46;">(e);  
+</span><span style="color:#343d46;">            }  
+</span><span style="color:#343d46;">        }  
+</span><span style="color:#343d46;">    }  
+</span><span style="color:#343d46;">}
+</span></code></pre>
+<p>要讓這個執行緒開始跑，並不是呼叫 run() ，而是呼叫 start() ，因為呼叫 run() 並不會建立一個新的執行緒。</p>
+<pre data-lang="java" style="background-color:#eff1f5;color:#4f5b66;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public class </span><span style="color:#d08770;">Main </span><span style="color:#343d46;">{  
+</span><span style="color:#343d46;">    </span><span style="color:#b48ead;">public static void </span><span style="color:#8fa1b3;">main</span><span style="color:#343d46;">(</span><span style="color:#d08770;">String</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#343d46;">) { 
+</span><span style="color:#343d46;">		</span><span style="color:#d08770;">MyThread</span><span style="color:#343d46;"> thread </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">MyThread</span><span style="color:#343d46;">();
+</span><span style="color:#343d46;">		thread.</span><span style="color:#bf616a;">start</span><span style="color:#343d46;">();
+</span><span style="color:#343d46;">    }  
+</span><span style="color:#343d46;">}
+</span></code></pre>
+<h2 id="shi-zuo-runnable">實作 Runnable</h2>
+<p>Runnable 介面只有一個方法 run() ，因此實作時和繼承 Thread 時一樣：</p>
+<pre data-lang="Java" style="background-color:#eff1f5;color:#4f5b66;" class="language-Java "><code class="language-Java" data-lang="Java"><span style="color:#b48ead;">public class </span><span style="color:#d08770;">MyRunnable </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">Runnable </span><span style="color:#343d46;">{ 
+</span><span style="color:#343d46;">    @</span><span style="color:#bf616a;">Override  
+</span><span style="color:#343d46;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#343d46;">() {  
+</span><span style="color:#343d46;">        </span><span style="color:#b48ead;">for </span><span style="color:#343d46;">(</span><span style="color:#b48ead;">int</span><span style="color:#343d46;"> i </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#343d46;">; i </span><span>&lt; </span><span style="color:#d08770;">5</span><span style="color:#343d46;">; i</span><span>++</span><span style="color:#343d46;">) {  
+</span><span style="color:#343d46;">            </span><span style="color:#d08770;">System</span><span style="color:#343d46;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#343d46;">(i);
+</span><span style="color:#343d46;">        }  
+</span><span style="color:#343d46;">    }  
+</span><span style="color:#343d46;">}
+</span></code></pre>
+<p>現在它還不是一個可以跑的執行緒，要先呼叫 Thread 的建構子，並把 MyRunnable 當作參數建立一個 Thread 。</p>
+<pre data-lang="Java" style="background-color:#eff1f5;color:#4f5b66;" class="language-Java "><code class="language-Java" data-lang="Java"><span style="color:#b48ead;">public class </span><span style="color:#d08770;">Main </span><span style="color:#343d46;">{  
+</span><span style="color:#343d46;">    </span><span style="color:#b48ead;">public static void </span><span style="color:#8fa1b3;">main</span><span style="color:#343d46;">(</span><span style="color:#d08770;">String</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#343d46;">) { 
+</span><span style="color:#343d46;">		</span><span style="color:#d08770;">MyRunnable</span><span style="color:#343d46;"> runnable </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">MyRunnable</span><span style="color:#343d46;">();
+</span><span style="color:#343d46;">		</span><span style="color:#d08770;">Thread</span><span style="color:#343d46;"> thread </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">Thread</span><span style="color:#343d46;">(runnable);
+</span><span style="color:#343d46;">		thread.</span><span style="color:#bf616a;">start</span><span style="color:#343d46;">();
+</span><span style="color:#343d46;">    }  
+</span><span style="color:#343d46;">}
+</span></code></pre>
+<h2 id="runnable-yu-thread">Runnable 與 Thread</h2>
+<p>那麼到底該<strong>實作 Runnable</strong> 還是<strong>繼承 Thread</strong> 呢？
+Thread 實作了 Runnable ，並新增了許多方法如 wait(), sleep() 等，但是使用實作 Runnable 的方法最終還是會建立一個 Thread ，所以一樣可以用到 Thread 的方法。此外，由於 Java 不允許<strong>多重繼承</strong>，因此實作 Runnable 的好處是不會佔用繼承的位置。
+總而言之，能用 Runnable 就盡量用吧！</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

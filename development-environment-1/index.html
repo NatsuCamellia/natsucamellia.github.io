@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    客製化順手的開發環境（1）——套件管理軟體 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      客製化順手的開發環境（1）——套件管理軟體
+    </h1>
+    <p class="post-date">
+      Published on 2025-02-02
+    </p>
+  </header>
+  <article>
+    <h2 id="tao-jian-guan-li-ruan-ti-homebrew">套件管理軟體 - Homebrew</h2>
+<p><img src="https://natsucamellia.github.io/development-environment-1/./homebrew.png" alt="Homebrew" /></p>
+<p>剛拿到一台電腦要建立開發環境之前，第一步就是安裝日後必要的軟體與套件。在 macOS 上常見的套件管理軟體是 <a href="https://brew.sh">Homebrew</a> 與 <a href="https://www.macports.org">MacPorts</a>，而兩者之中<a href="https://www.reddit.com/r/MacOS/comments/1cmiq5w/which_package_manager_do_you_use/">最多人使用的是 Homebrew</a>，也是我目前正在使用的套件管理軟體，因此本節以 Homebrew 為主要介紹對象。對於 Linux 系統只需要使用各個 Linux distro 的內建套件管理軟體即可，因為內建軟體的相容度一般來說會比較高，所以不推薦再使用其他套件管理軟體。</p>
+<p>幾乎所有有關程式開發的函式庫、軟體都可以在 Homebrew 上安裝，因此每次我要安裝函式庫時第一步就是先檢查 Homebrew 上有沒有該函式庫，把所有東西都用 Homebrew 管理真的很舒爽。安裝 Homebrew 很容易，只需要到 <a href="https://brew.sh">Homebrew 的網站</a>上複製安裝指令，並貼上至終端機執行即可，記得下載完後要在輸出文字中找到 <code>Next steps</code>，照做完成 <code>PATH</code> 設定就算是安裝成功了。</p>
+<h2 id="an-zhuang-tao-jian">安裝套件</h2>
+<p>接著以安裝 GCC 為例來展示 Homebrew 的常見用法，我們先搜尋在 Homebrew 上有哪些安裝選項：（我已經安裝好 <code>gcc</code> 了所以旁邊有個勾）</p>
+<blockquote>
+<p>讀者可能會有疑問，在 macOS 上可以使用 <code>gcc</code> 指令來編譯 C 程式，為什麼還要安裝 GCC？這是因為 macOS 中的 <code>gcc</code> 指令預設指向 Clang 編譯器（macOS 因為 GCC 條款問題而自行開發的 C 編譯器），如果使用 <code>gcc --version</code> 指令就能觀察到這一點。下方會告訴讀者如何將 <code>gcc</code> 指令指向 GCC 而不是 Clang。</p>
+</blockquote>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>brew search gcc
+</span></code></pre>
+<p><img src="https://natsucamellia.github.io/development-environment-1/./search.png" alt="search" /></p>
+<p>這時候會看到很多輸出訊息，我來解釋這些訊息是什麼意思。<code>Formulae</code> 中的套件通常是編譯而成、不帶有 GUI 的 CLI 軟體，如 Python、GCC；而 <code>Casks</code> 中的套件通常是透過官方網站下載的安裝包安裝而成的 GUI 軟體，如 WireShark（沒錯，WireShark 可以透過 Homebrew 安裝）。</p>
+<p>從中可以看到 <code>gcc</code> 以及標有版本號的 <code>gcc@13</code> 等套件，<code>gcc</code> 會指向最新版本的 GCC，未來如果 GCC 更新了 GCC 15、GCC 16，<code>gcc</code> 也會自動更新上去，而 <code>gcc@13</code> 就只會停在 GCC 13。</p>
+<p>最後我們確認一下 <code>gcc</code> 是不是我們所期望的 GCC，使用指令查看套件訊息：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>brew info gcc
+</span></code></pre>
+<p><img src="https://natsucamellia.github.io/development-environment-1/./info.png" alt="info" /></p>
+<p>在輸出中可以看到套件的完整名稱 GNU compiler collection、官方網站連結、來源以及授權條款等資訊，也可以看到最近的總安裝次數。決定好要安裝的套件後，使用指令安裝該套件：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>brew install gcc
+</span></code></pre>
+<p>此時 GCC 就安裝成功了。</p>
+<h2 id="homebrew-an-zhuang-yuan-li">Homebrew 安裝原理</h2>
+<p>使用 <code>brew list</code> 可以看到目前已經安裝的套件以及預設安裝的套件，其中應該包含 <code>gcc</code>：（我的套件很多沒辦法完整截圖，<code>gcc</code> 在更下方）</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>brew list
+</span></code></pre>
+<p><img src="https://natsucamellia.github.io/development-environment-1/./list.png" alt="list" /></p>
+<p>如果要查看一個套件中的所有可執行檔：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>brew list gcc
+</span></code></pre>
+<p><img src="https://natsucamellia.github.io/development-environment-1/./list_gcc.png" alt="list gcc" /></p>
+<p>此時會輸出許多可執行檔，而其中我想要使用的 <code>gcc</code> 是：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>/opt/homebrew/Cellar/gcc/14.2.0_1/bin/gcc-14
+</span></code></pre>
+<p>Homebrew 安裝完套件後，會將套件的指令放在 <code>/opt/homebrew/bin</code> 中，並指向真正的位置。例如我想使用的 <code>gcc-14</code> 就會位於 <code>/opt/homebrew/bin/gcc-14</code> 並指向 <code>/opt/homebrew/Cellar/gcc/14.2.0_1/bin/gcc-14</code>，使用以下指令可以驗證這一點：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>ls -l /opt/homebrew/bin/gcc-14
+</span><span>
+</span><span>// Output
+</span><span>... /opt/homebrew/bin/gcc-14 -&gt; ../Cellar/gcc/14.2.0_1/bin/gcc-14
+</span></code></pre>
+<p>而 <code>/opt/homebrew/bin</code> 在安裝 Homebrew 時就已經加入 <code>PATH</code> 環境變數中了，所以我們只需要使用 <code>gcc-14</code> 就可以用 GCC 編譯 C 程式了。</p>
+<p>簡單整理一下，當我們使用 <code>gcc-14</code> 指令時，作業系統會在 <code>PATH</code> 中尋找 <code>gcc-14</code>，此時作業系統在 <code>PATH</code> 中的 <code>/opt/homebrew/bin</code> 找到了 <code>gcc-14</code> 於是執行它，而這個 <code>gcc-14</code> 實際上指向 <code>/opt/homebrew/Cellar/gcc/14.2.0_1/bin/gcc-14</code>，所以被執行的是後者的 <code>gcc-14</code> 也就是真正安裝的 <code>gcc-14</code>。</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>gcc-14
+</span><span> ↓ (OS find gcc-14 in PATH)
+</span><span>PATH
+</span><span> ↓ (OS found gcc-14)
+</span><span>/opt/homebrew/bin/gcc-14
+</span><span> ↓ (Links to real gcc-14)
+</span><span>/opt/homebrew/Cellar/gcc/14.2.0_1/bin/gcc-14
+</span></code></pre>
+<h2 id="rang-gcc-zhi-xiang-zhen-zheng-de-gcc">讓 GCC 指向真正的 GCC</h2>
+<p>現在如果使用 <code>gcc --version</code>，輸出依舊是 macOS 的內建編譯器 Clang。有不同方法可以將 <code>gcc</code> 指向我們剛安裝的 GCC，我這裡使用最溫和而不破壞環境的方法：<code>alias gcc=gcc-14</code>，讓 shell 在讀取到 <code>gcc</code> 指令時自動轉換成 <code>gcc-14</code>，如果想要取消的話，使用 <code>unalias gcc</code> 即可。如果要使用 Clang 編譯器的話可以使用 <code>clang</code> 指令。</p>
+<p>其實安裝的 GCC 中也包括了 G++，可以使用相同的方法將 <code>g++</code> 指向 <code>g++-14</code>。</p>
+<h2 id="chang-yong-zhi-ling">常用指令</h2>
+<ul>
+<li><code>brew search gcc</code>：搜尋名稱包含 <code>gcc</code> 的所有套件</li>
+<li><code>brew info gcc</code>：查看套件 <code>gcc</code> 的訊息</li>
+<li><code>brew install gcc</code>：安裝 <code>gcc</code></li>
+<li><code>brew uninstall gcc</code>：解除安裝 <code>gcc</code></li>
+<li><code>brew list</code>：列出已安裝的套件</li>
+<li><code>brew list gcc</code>：列出 <code>gcc</code> 的可執行檔</li>
+<li><code>brew update</code>：更新 Homebrew 套件資料庫</li>
+<li><code>brew upgrade</code>：更新所有套件</li>
+<li><code>brew upgrade gcc</code>：更新 <code>gcc</code></li>
+</ul>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

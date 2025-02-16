@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Minecraft 煙火機制 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Minecraft 煙火機制
+    </h1>
+    <p class="post-date">
+      Published on 2024-02-26
+    </p>
+  </header>
+  <article>
+    <p>本篇透過研究 Minecraft 的程式碼，來解析煙火從合成、NBT 標籤、施放一直到爆炸並產生粒子的機制，當下版本為 Java 1.21。</p>
+<hr />
+<h2 id="yi-huo-yao-qiu-firework-star">一、火藥球 Firework Star</h2>
+<p>煙火必須要有火藥球才能綻放出絢麗的爆炸特效，火藥球的合成材料包括了火藥、染料、形狀材料以及附加效果材料。</p>
+<h3 id="1-huo-yao-bi-yao">1. 火藥（必要）</h3>
+<p>火藥球的合成需要恰好一個火藥。</p>
+<h3 id="2-ran-liao-bi-yao">2. 染料（必要）</h3>
+<p>火藥球的合成需要至少一個染料，不包含骨粉、青金石等替代材料。在火藥球中添加染料，會將染料本身的顏色加入初始顏色清單中，這份清單決定了煙火爆炸時粒子的初始顏色。此外，將合成好的火藥球與染料合成，會將顏色加入最終顏色清單中，決定煙火爆炸粒子的最終顏色。關於顏色如何分佈與變化，在之後的爆炸粒子中會有更深入的說明。</p>
+<h3 id="3-xing-zhuang-cai-liao">3. 形狀材料</h3>
+<p>遊戲中煙火爆炸會產生不同的形狀，一顆火藥球只能擁有一個爆炸形狀，以下是不同材料所對應的爆炸形狀：</p>
+<blockquote>
+<p>以下動畫來自 <a href="https://zh.minecraft.wiki">Minecraft Wiki</a></p>
+</blockquote>
+<table><thead><tr><th>材料</th><th>形狀</th><th>動畫</th></tr></thead><tbody>
+<tr><td>無</td><td>小型球狀</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Small_Sphere).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Small_Sphere%29.gif/200px-Firework_Star_%28Small_Sphere%29.gif?f2de6" alt="Firework Star (Small Sphere).gif" /></a></td></tr>
+<tr><td>火焰彈</td><td>大型球狀</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Large_Sphere).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Large_Sphere%29.gif/200px-Firework_Star_%28Large_Sphere%29.gif?72744" alt="Firework Star (Large Sphere).gif" /></a></td></tr>
+<tr><td>金粒</td><td>星形</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Star_Shape).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Star_Shape%29.gif/200px-Firework_Star_%28Star_Shape%29.gif?1777f" alt="Firework Star (Star Shape).gif" /></a></td></tr>
+<tr><td>生物頭顱</td><td>苦力怕形</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Creeper_Shape).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Creeper_Shape%29.gif/200px-Firework_Star_%28Creeper_Shape%29.gif?e7af6" alt="Firework Star (Creeper Shape).gif" /></a></td></tr>
+<tr><td>羽毛</td><td>爆裂</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Burst).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Burst%29.gif/200px-Firework_Star_%28Burst%29.gif?d9b30" alt="Firework Star (Burst).gif" /></a></td></tr>
+</tbody></table>
+<h3 id="4-fu-jia-xiao-guo-cai-liao">4. 附加效果材料</h3>
+<p>遊戲中附加效果有閃爍與蹤跡兩種，可同時存在：</p>
+<blockquote>
+<p>以下動畫來自 <a href="https://zh.minecraft.wiki">Minecraft Wiki</a></p>
+</blockquote>
+<table><thead><tr><th>材料</th><th>效果</th><th>動畫</th></tr></thead><tbody>
+<tr><td>螢石粉</td><td>閃爍</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Twinkle_effect).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Twinkle_effect%29.gif/200px-Firework_Star_%28Twinkle_effect%29.gif?89cf5" alt="Firework Star (Twinkle effect).gif" /></a></td></tr>
+<tr><td>鑽石</td><td>蹤跡</td><td><a href="https://zh.minecraft.wiki/w/File:Firework_Star_(Trail_effect).gif"><img src="https://zh.minecraft.wiki/images/thumb/Firework_Star_%28Trail_effect%29.gif/200px-Firework_Star_%28Trail_effect%29.gif?edaa8" alt="Firework Star (Trail effect).gif" /></a></td></tr>
+</tbody></table>
+<hr />
+<h2 id="er-yan-huo">二、煙火</h2>
+<p>煙火的合成材料包括火藥、紙以及火藥球。</p>
+<h3 id="1-huo-yao-bi-yao-1">1. 火藥（必要）</h3>
+<p>煙火中的火藥材料多寡決定了煙火的飛行時間，亦即從發射到爆炸的這段時間長度，可以加入一至三個火藥來為煙火提供不同的飛行時間。煙火的飛行時間公式為： $10 \times (火藥數量 + 1) + rand(6) + rand(7)$ 遊戲刻，其中 $rand(n)$ 為 $0$ 至 $n - 1$ 的隨機數字。平均飛行時間為 $5.5 + (10 \times 火藥數量 + 1)$ 遊戲刻，實際飛行時間的機率分佈會以平均飛行時間為中心，向左右遞減。</p>
+<h3 id="2-zhi-bi-yao">2. 紙（必要）</h3>
+<p>煙火的合成需要恰好一張紙。</p>
+<h3 id="3-huo-yao-qiu">3. 火藥球</h3>
+<p>在煙火中加入火藥球可以新增其效果（顏色、形狀與附加效果）至 NBT 標籤中，於爆炸時逐一釋放。</p>
+<hr />
+<h2 id="san-nbt-biao-qian">三、NBT 標籤</h2>
+<p>煙火是如何將火藥球的資訊保存，一路傳遞到煙火爆炸？煙火透過 NBT 標籤儲存火藥球的資訊，NBT 標籤內有多種標籤，其中煙火從物品到實體都會持續保有名為 <code>Explosions</code> 的 NBT 標籤。</p>
+<p><code>Explosions</code> 是一個列表，其中有多個火藥球 NBT 標籤。當製作煙火時，會把所有作為合成材料的火藥球之 NBT 標籤放進煙火的 <code>Explosions</code> 標籤。這個標籤看起來的樣子是：煙火有一個 NBT 標籤叫做 <code>Explosions</code>，裡面有很多火藥球 NBT 標籤，每個火藥球 NBT 標籤都有爆炸形狀、閃爍、軌跡等資訊。</p>
+<hr />
+<h2 id="si-fa-she-yan-huo">四、發射煙火</h2>
+<p>生成煙火實體（發射煙火）有三種方法，第一種是直接發射，即手持煙火物品對方塊使用，發射方向朝上；第二種是用弩發射，煙火可以替代箭矢作為弩的發射物被填充並射出，發射方向為準心瞄準的方向；第三種則是透過發射器發射，方向為發射器口朝向的方向，只有以發射器發射時不記錄發射者。此外，生成煙火實體時，實體會讀取召喚時使用之物品，進而讀取煙火的 NBT 標籤並儲存。</p>
+<hr />
+<h2 id="wu-yan-huo-fei-xing-yu-bao-zha">五、煙火飛行與爆炸</h2>
+<p>煙火實體在被生成時，會依照煙火物品合成所用的火藥數量，套進公式後初始化最大飛行時間。在之後的飛行時間內，每兩個遊戲刻會在煙火實體處發射煙火粒子，方向朝下，速度是煙火實體 Y 軸速度的一半。當達到最大飛行時間後，煙火實體便會爆炸，造成傷害並生成煙火爆炸子。</p>
+<p>煙火的傷害計算公式為 $damage = 5 + 2 \times \text{火藥球數量}$，爆炸時會對半徑五格內的生物造成傷害，傷害與距離的關係為 $damage \times \sqrt{\frac{5 - distance}{5}}$，當 $damage = 5$ 時如下圖所示，橫軸為距離，縱軸為傷害：
+<img src="https://natsucamellia.github.io/mechanics-of-minecraft-fireworks/firework-distance-damage.png" alt="煙火距離與傷害關係圖" title="煙火距離與傷害關係圖" /></p>
+<hr />
+<h2 id="liu-yan-huo-bao-zha-zi">六、煙火爆炸子</h2>
+<p>終於來到煙火的重頭戲，當煙火實體爆炸時會生成煙火爆炸子，煙火爆炸子和煙火實體一樣持有關於火藥球的 NBT 標籤，煙火爆炸子的任務是產生爆炸音效以及將火藥球逐個釋放。</p>
+<p>煙火爆炸子生成時，會產生煙火爆炸的音效，若火藥球有三個以上或是含有大型球狀的火藥球，則會產生較沈重的音效，反之會產生較清亮的音效。此外，若玩家與煙火爆炸子的距離為 16 格以上，此音效還會產生延遲，玩家看到爆炸後過一段時間才能聽到煙火的爆炸聲。</p>
+<p>每過兩個遊戲刻，煙火爆炸子會依序從 NBT 標籤中選擇一個火藥球，根據火藥球的資訊，在煙火爆炸子處產生指定形狀的大量爆炸粒子，也就是我們平常看到的煙火特效。在生成爆炸粒子時，會將軌跡、閃爍、透明度與顏色等資訊傳遞給爆炸粒子，其中初始顏色和最終顏色是分別從火藥球 NBT 標籤內的「初始顏色清單」與「最終顏色清單」隨機選擇，爆炸粒子行進時會由初始顏色逐漸轉變為最終顏色。</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

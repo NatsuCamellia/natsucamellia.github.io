@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Lambda Calculus 簡介 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Lambda Calculus 簡介
+    </h1>
+    <p class="post-date">
+      Published on 2025-01-26
+    </p>
+  </header>
+  <article>
+    <h2 id="1-lambda-calculus">1 Lambda Calculus</h2>
+<p>Lambda calculus 是由數學家 Alonzo Church 在 1930 年代提出的一套數學邏輯規則，在程式語言領域中有重要的地位，被視為是程式語言的雛形。它對許多函數式程式語言造成很大的影響，如第一個函數式程式語言 Lisp、純函數式程式語言 Haskell 等，此外 Haskell 的標誌中的 λ 就代表 lambda calculus。</p>
+<p><img src="https://natsucamellia.github.io/lambda-calculus-intro/./haskell-logo.svg" alt="Haskell Logo" /></p>
+<p>如果對於 Alan Turing 在相同年代提出的圖靈機有概念的話，lambda calculus 具有圖靈完備性，也就是說 lambda calculus 可以用來模擬圖靈機的運算。</p>
+<hr />
+<h2 id="2-basics">2 Basics</h2>
+<p>我們首先定義 lambda calculus 的 syntax 以及 semantics。</p>
+<p>Syntax（語法）指的是一門語言怎麼寫才是對的，semantics（語意）則是指語言的意義。在這裡，語言指的是 lambda calculus，程式語言領域中指的是程式語言本身，而在語言學中則是指自然語言。舉英文為例，句子的 syntax 可以是 S + V，其 semantics 為「S 做了動作 V」。</p>
+<h3 id="2-1-syntax">2.1 Syntax</h3>
+<p>最簡單的 lambda calculus 包含了三種 <strong>terms</strong>：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>t ::= x     (variable)
+</span><span>      λx. t (abstraction)
+</span><span>      t t   (application)
+</span></code></pre>
+<p>其中 <code>t</code> 代表的是 <strong>term</strong>，它可以是：</p>
+<ol>
+<li>由任何符號代表的 <strong>variable</strong>。</li>
+<li>完整的函式定義 <strong>abstraction</strong>，包括了 <code>λ</code> 與 <code>.</code> 之間一個參數 <code>x</code>，以及 <code>.</code> 之後代表函式本體的 term <code>t</code>。</li>
+<li>將第二個 term 作為參數傳入第一個 term 的 <strong>application</strong>，類似於函式呼叫。</li>
+</ol>
+<blockquote>
+<p><code>t</code> 是一個 metavariable，它不存在於 syntax 中，它只用於指涉 term，也就是說在 application term 中的兩個 <code>t</code> 可以是兩個不同的 terms。</p>
+</blockquote>
+<h3 id="2-2-semantics">2.2 Semantics</h3>
+<p>在最簡單的 lambda calculus 中沒有條件控制、迴圈等元素，計算方法只有將參數帶入函式而已，也就是將 abstraction 中的參數替換成右邊的 term：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>(λx. t1) t2 → [x ↦ t2]t1
+</span></code></pre>
+<blockquote>
+<p><code>λx.</code> 後方會被視為一個整體，因此需要用括號限制 abstraction 的範圍。</p>
+</blockquote>
+<p>其中 <code>→</code> 代表左邊的 term 經過一步 evaluation 會變成右邊的 term，而 <code>[x ↦ t2]t1</code> 代表將 <code>t1</code> 中所有的 <code>x</code> 替換為 <code>t2</code>。</p>
+<blockquote>
+<p>這裡說的「將 <code>t1</code> 中所有的 <code>x</code> 替換為 <code>t2</code>」其實是不準確的說法，應該要說「將 <code>t1</code> 中所有的 <strong>free variable</strong> <code>x</code> 替換為 <code>t2</code>」，因為我們一般預期的行為是</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>(λx. (λx. x) (x + 1)) n → (λx. x) (n + 1) → n + 1
+</span></code></pre>
+<p>而非</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>(λx. (λx. x) (x + 1)) n → (λx. n) (n + 1) → n
+</span></code></pre>
+<p>所謂 free variable 簡單來說就是 <code>x</code> 不是任何 abstraction 的參數。在這個例子中，<code>t1 = (λx. x) (x + 1)</code>：</p>
+<ul>
+<li><code>(x + 1)</code> 的 <code>x</code> 是 <code>t1</code> 中的 <strong>free variable</strong>，因為這個 <code>x</code> 在 <code>t1</code> 中沒有對應的 <code>λx.</code>，所以根據 semantics 可以被替換成 <code>n</code>。</li>
+<li>而 <code>(λx. x)</code> 中的 <code>x</code> 就不是 free variable，而是 <strong>bound variable</strong>，因為它和旁邊的 <code>λx.</code> 綁定（bound）。</li>
+</ul>
+</blockquote>
+<p>舉例而言，我們定義 identity function：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>id = λx. x
+</span></code></pre>
+<p>從 syntax 的角度看，因為函式本體中的 <code>x</code>（第二個 <code>x</code>）是一個 variable，所以 <code>id</code> 是一個 abstraction。</p>
+<p>接著我們透過 <code>id n</code> 觀察 semantics：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>id n
+</span><span>= (λx. x) n
+</span><span>→ [x ↦ n]x
+</span><span>= n
+</span></code></pre>
+<p><code>id</code> 確實是一個回傳參數本身的 identity function。</p>
+<hr />
+<h2 id="3-programming">3 Programming</h2>
+<h3 id="3-1-multiple-arguments">3.1 Multiple Arguments</h3>
+<p>Abstraction terms 中，<code>λ</code> 後面只能定義一個參數，如果要讓一個函式可以接收多個參數，則需要透過 <a href="https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96">currying</a> 讓一個函式回傳另一個函式來達到多個參數的效果。舉例而言，我們要讓一個函數接收兩個參數並回傳第一個參數，可以這樣定義：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>tru = λt. λf. t
+</span></code></pre>
+<p>展示使用的效果：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>tru x y
+</span><span>= (λt. λf. t) x y
+</span><span>→ (λf. x) y          // t ↦ x
+</span><span>→ x                  // f ↦ y
+</span></code></pre>
+<p>當 <code>tru</code> 接收參數 <code>x</code> 後就會得到另一個函式 <code>(λf. x)</code>，接著這個函式會負責接收第二個參數 <code>y</code>。</p>
+<p>同樣的我們也可以定義回傳第二個參數的函式：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>fls = λt. λf. f
+</span></code></pre>
+<h3 id="3-2-church-booleans">3.2 Church Booleans</h3>
+<p>以上介紹的兩個 term <code>tru</code> 和 <code>fls</code> 被稱為 <strong>Church booleans</strong>，相當於 lambda calculus 中的布林值。使用 <code>tru</code> 與 <code>fls</code> 命名的目的是避免和一般的布林值 <code>true</code> 與 <code>false</code> 搞混，Church booleans 實際上是 abstraction。</p>
+<p>有了 <code>tru</code> 與 <code>fls</code> 後，我們可以將它們用於條件判斷，常見的 <code>if-then-else</code> 可以寫成接收三個參數的 term <code>test</code>：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>test = λb. λt. λf. b t f
+</span></code></pre>
+<p><code>test b t f</code> 的用法就相當於 <code>if b then t else f</code>，我們將 <code>tru</code> 或 <code>fls</code> 傳入作為第一個參數，然後傳入 then-branch 與 else-branch，如果 <code>b = tru</code>，那麼</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>test tru t f
+</span><span>→ tru t f
+</span><span>→ t
+</span></code></pre>
+<p>最後得到 <code>t</code>（<code>tru</code> 會回傳第一個參數！），反之若 <code>b = fls</code> 則會得到 <code>f</code>。</p>
+<p>我們也可以定義邏輯運算：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>and = λb. λc. b c fls
+</span><span>or = λb. λc. b tru c
+</span></code></pre>
+<p>這裡的定義和 short-circuit 的概念有異曲同工之妙，在 short-circuit 中，如果 <code>b</code> 是 <code>false</code> 那麼 <code>b and c</code> 就不可能是 <code>true</code> 了，所以可以直接回傳 <code>false</code>，在上方的定義中，如果 <code>b</code> 是 <code>fls</code>，因為 <code>fls</code> 會選擇第二個參數，所以不管 <code>c</code> 為何 <code>b c fls</code> 都會直接回傳 <code>fls</code>。Short-circuit 這種提前回傳結果的概念在大多的現代程式語言中都有實作，因此需要注意 <code>and</code> 及 <code>or</code> 的第二個參數可能會被忽略，尤其當第二個參數是函式時，會導致函式沒有被執行。</p>
+<h3 id="3-3-pairs">3.3 Pairs</h3>
+<p>在 lambda calculus 中如何表達資料結構呢？我們先看在函數式程式語言中最基本的資料結構 <strong>pair</strong>。</p>
+<p>在函數式程式語言中，tuple（元組）是一個簡單的資料結構，語法通常是括號中放多個元素並以 <code>,</code> 隔開，例如 <code>(1, 3, 5, 7)</code>、<code>('h', 'e', 'l', 'l', 'o')</code>，而 pair 就是元素數量為 2 的 tuple。</p>
+<p>最常與 pair 搭配使用的函式是 <code>first</code> 與 <code>second</code>，分別可以取出第一個與第二個元素，利用 Church booleans 我們可以為 pair 定義以下 terms：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>pair = λf. λs. λb. b f s
+</span><span>first = λp. p tru
+</span><span>second = λp. p false
+</span></code></pre>
+<p>我們利用 <code>tru</code> 與 <code>fls</code> 能夠選擇第一個與第二個參數的特性，我們先把兩個元素放進 <code>pair</code> 中，要取出元素時再使用 <code>tru</code> 與 <code>fls</code> 取出想要的元素。例如我們可以將二維坐標 $(x, y)$ 儲存為：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>pos = pair x y
+</span><span>    = (λf. λs. λb. b f s) x y
+</span><span>    → (λb. b x y)
+</span></code></pre>
+<p>現在只要傳入 <code>tru</code> 或 <code>fls</code> 給 <code>pos</code> 就可以取出 <code>x</code> 或 <code>y</code>，如果想要取出 <code>x</code> 座標就可以寫：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>first pos
+</span><span>= (λp. p tru) (λb. b x y)
+</span><span>→ (λb. b x y) tru
+</span><span>→ tru x y
+</span><span>→ x
+</span></code></pre>
+<p><code>first</code> 就僅僅是將 <code>tru</code> 傳給參數 pair <code>p</code>，然後取得第一個元素而已，<code>second</code> 則是傳 <code>fls</code> 來取得第二個元素。</p>
+<h3 id="3-4-church-numerals">3.4 Church Numerals</h3>
+<p>最後來看看如何在 lambda calculus 中表達自然數。這裡的概念和<a href="https://zh.wikipedia.org/zh-tw/%E7%9A%AE%E4%BA%9A%E8%AF%BA%E5%85%AC%E7%90%86">皮亞諾公設</a>的概念相似，皮亞諾公設中提到兩點：</p>
+<ol>
+<li>0 是自然數。</li>
+<li>每一個確定的自然數 $a$，都有一個確定的後繼數（successor） $a'$ ，$a'$ 也是自然數。</li>
+</ol>
+<p>在 lambda calculus 中，<a href="https://en.wikipedia.org/wiki/Church_encoding#Church_numerals">Church numerals</a> 的定義頗有皮亞諾公設的感覺，我們需要給定 <strong>0</strong> 是什麼以及 successor 是什麼意思，所以 Church numerals 的定義如下：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>c0 = λs. λz. z
+</span><span>c1 = λs. λz. s z
+</span><span>c2 = λs. λz. s (s z)
+</span><span>c3 = λs. λz. s (s (s z))
+</span><span>...
+</span></code></pre>
+<p>這裡變數名稱 <code>s</code> 代表 successor 而 <code>z</code> 代表 zero，<code>cn</code> 則是為了避免和一般的數字混淆。</p>
+<p>可以看到每個 church numeral 只要給定了 successor 和 0 的定義，那麼它就是 well-defined。0 是 <code>z</code>、1 是 <code>z</code> 的下一個元素、2 則是 <code>z</code> 的下一個再下一個元素，依此類推。</p>
+<p>這裡有個重要的觀察，如果換個角度想，<code>cn</code> 的作用其實就是接收一個函式 <code>s</code> 和一個元素 <code>z</code>，對 <code>z</code> 呼叫 <code>n</code> 次 <code>s</code>，也就是 $s^n(z)$。</p>
+<p>接著介紹幾個常用於 Church numerals 的函式：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>succ = λn. λs. λz. s (n s z)
+</span><span>plus = λm. λn. λs. λz. m s (n s z)
+</span><span>times = λm. λn. m (plus n) c0
+</span><span>iszero = λn. n (λx. fls) tru
+</span></code></pre>
+<p>以上的定義中 <code>m</code> 與 <code>n</code> 都是 Church numerals。<code>succ</code> 概念上就是再多呼叫一次 <code>s</code>，<code>plus</code> 則是先呼叫 <code>n</code> 次再呼叫 <code>m</code> 次而達成 <code>m + n</code> 的效果，<code>times</code> 就是對 0 加上 <code>m</code> 次 <code>n</code>，<code>iszero</code> 使用一個總是回傳 <code>fls</code> 的函式，如果呼叫一次以上結果就會是 <code>fls</code>，如果 <code>n = c0</code> 則結果會是 <code>tru</code>。</p>
+<p>最後介紹比較複雜的 <code>pred</code>（predecessor），取得前一個 Church numeral：</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>zz = pair c0 c0
+</span><span>ss = λp. pair (second p) (plus c1 (second p))
+</span><span>pred = λn. first (n ss zz)
+</span></code></pre>
+<p>概念上是維護一個 pair 記錄上一個以及目前的 Church numeral <code>(last, this)</code>，<code>zz</code> 是一開始的狀態，<code>ss</code> 會把 $(c_n, c_m)$ 變成 $(c_m, c_{m+1})$。<code>pred</code> 對 <code>zz</code> 呼叫 <code>n &gt; 0</code> 次 <code>ss</code> 後就會得到 $(c_{n-1}, c_n)$，然後呼叫 <code>first</code> 得到 $c_{n-1}$。</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>pred c3
+</span><span>→ first (c3 ss zz)                 
+</span><span>→ first (ss (ss (ss zz)))          
+</span><span>= first (ss (ss (ss (pair c0 c0))))
+</span><span>→ first (ss (ss (pair c0 c1)))     
+</span><span>→ first (ss (pair c1 c2))
+</span><span>→ first (pair c2 c3)
+</span><span>→ c2
+</span></code></pre>
+<hr />
+<h2 id="4-lambda-abstractions">4 Lambda Abstractions</h2>
+<p>這裡列出本篇文章提到的所有 lambda abstractions。</p>
+<h3 id="4-1-combinators">4.1 Combinators</h3>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>id = λx.x
+</span></code></pre>
+<h3 id="4-2-church-booleans">4.2 Church Booleans</h3>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>tru = λt. λf. t
+</span><span>fls = λt. λf. f
+</span><span>test = λb. λt. λf. b t f
+</span></code></pre>
+<h3 id="4-3-church-numerals">4.3 Church Numerals</h3>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>c0 = λs. λz. z
+</span><span>c1 = λs. λz. s z
+</span><span>c2 = λs. λz. s (s z)
+</span><span>c3 = λs. λz. s (s (s z))
+</span><span>...
+</span><span>
+</span><span>succ = λn. λs. λz. s (n s z)
+</span><span>plus = λm. λn. λz. m s (n s z)
+</span><span>times = λm. λn. m (plus n) c0
+</span><span>iszero = λn. n (λx. fls) tru
+</span><span>
+</span><span>zz = pair c0 c0
+</span><span>ss = λp. pair (second p) (plus c1 (second p))
+</span><span>pred = λn. first (n ss zz)
+</span></code></pre>
+<hr />
+<h2 id="reference">Reference</h2>
+<ol>
+<li>Types and Programming Languages, Benjamin C. Pierce</li>
+<li><a href="https://zh.wikipedia.org/zh-tw/%CE%9B%E6%BC%94%E7%AE%97">λ演算 - 維基百科，自由的百科全書</a></li>
+</ol>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

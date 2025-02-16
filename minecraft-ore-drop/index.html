@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Minecraft 礦物掉落 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Minecraft 礦物掉落
+    </h1>
+    <p class="post-date">
+      Published on 2023-02-07
+    </p>
+  </header>
+  <article>
+    <p>不想看分析可以直接下拉看<strong>期望值整理</strong>。</p>
+<p>Minecraft 中礦物掉落的公式大多使用 <code>minecraft:ore_drop</code> 公式，數學式為：</p>
+<p>$$
+count * (max(0, random(level + 2) - 1) + 1)
+$$</p>
+<p>其中 count 為 1 的礦物以下稱為<strong>單一掉落型</strong>礦物，如煤炭、鑽石， count 不為 1 的礦物稱為<strong>多重掉落型</strong>礦物，如銅、青金石。</p>
+<h2 id="dan-yi-diao-luo">單一掉落</h2>
+<p>從運算結果來看，可以理解為：掉落一個的權重為 2 ，每有一等幸運，就會多一點權重再<strong>額外掉落</strong>一個，用表格說明：</p>
+<table><thead><tr><th>幸運</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody>
+<tr><td>level=0</td><td>2</td><td></td><td></td><td></td></tr>
+<tr><td>level=1</td><td>2</td><td>1</td><td></td><td></td></tr>
+<tr><td>level=2</td><td>2</td><td>1</td><td>1</td><td></td></tr>
+<tr><td>level=3</td><td>2</td><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<p>機率的話則如下表：</p>
+<table><thead><tr><th>drop</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody>
+<tr><td>level=0</td><td>1.00</td><td></td><td></td><td></td></tr>
+<tr><td>level=1</td><td>0.66</td><td>0.33</td><td></td><td></td></tr>
+<tr><td>level=2</td><td>0.50</td><td>0.25</td><td>0.25</td><td></td></tr>
+<tr><td>level=3</td><td>0.40</td><td>0.20</td><td>0.20</td><td>0.20</td></tr>
+</tbody></table>
+<h2 id="duo-zhong-diao-luo">多重掉落</h2>
+<table><thead><tr><th>礦物</th><th>count</th></tr></thead><tbody>
+<tr><td>銅礦</td><td>2~6</td></tr>
+<tr><td>青金石礦</td><td>4~9</td></tr>
+<tr><td>地獄金礦</td><td>2~6</td></tr>
+</tbody></table>
+<p>這三種礦物的 <code>count</code> 機率為<strong>平均分佈</strong>，總掉落計算方法為先算出 <code>count</code> ，再乘上 <code>(max(0, random(level + 2) - 1) + 1)</code>。</p>
+<h2 id="guan-yu-hong-shi">關於紅石</h2>
+<p>紅石所使用的公式並不是 <code>minecraft:ore_drop</code> ，而是使用 <code>minecraft:uniform_bonus_count</code> ，紅石的 count 為 4~5 ，機率各半。</p>
+<p>掉落 <code>count</code> 的權重為 1 ，每有一等幸運，就會多一點權重再額外掉落一個，以 <code>count=4</code> 為例用表格說明：</p>
+<table><thead><tr><th>drop</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead><tbody>
+<tr><td>level=0</td><td>1</td><td></td><td></td><td></td></tr>
+<tr><td>level=1</td><td>1</td><td>1</td><td></td><td></td></tr>
+<tr><td>level=2</td><td>1</td><td>1</td><td>1</td><td></td></tr>
+<tr><td>level=3</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<h2 id="qi-wang-zhi-zheng-li">期望值整理</h2>
+<table><thead><tr><th>幸運</th><th>單一掉落型</th><th>銅礦＆地獄金礦</th><th>青金石礦</th><th>紅石礦</th></tr></thead><tbody>
+<tr><td>level=0</td><td>1.00</td><td>4.00</td><td>6.50</td><td>4.50</td></tr>
+<tr><td>level=1</td><td>1.33</td><td>5.33</td><td>8.66</td><td>5.00</td></tr>
+<tr><td>level=2</td><td>1.75</td><td>7.00</td><td>11.375</td><td>5.50</td></tr>
+<tr><td>level=3</td><td>2.20</td><td>8.80</td><td>14.30</td><td>6.00</td></tr>
+</tbody></table>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

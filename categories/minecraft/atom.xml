@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-tw">
+    <title>NatsuCamellia - Minecraft</title>
+    <subtitle>When camellia blooms in summer.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://natsucamellia.github.io/categories/minecraft/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-16T00:00:00+00:00</updated>
+    <id>https://natsucamellia.github.io/categories/minecraft/atom.xml</id>
+    <entry xml:lang="zh-tw">
+        <title>Minecraft 與 Java 的關係</title>
+        <published>2025-02-16T00:00:00+00:00</published>
+        <updated>2025-02-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/minecraft-and-java/"/>
+        <id>https://natsucamellia.github.io/minecraft-and-java/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/minecraft-and-java/">&lt;h2 id=&quot;wei-shen-mo-wan-minecraft-xu-yao-an-zhuang-java&quot;&gt;為什麼玩 Minecraft 需要安裝 Java？&lt;&#x2F;h2&gt;
+&lt;p&gt;Minecraft 主要分為兩個版本：&lt;strong&gt;Java Edition&lt;&#x2F;strong&gt; 和 &lt;strong&gt;Bedrock Edition&lt;&#x2F;strong&gt;。&lt;strong&gt;Java Edition&lt;&#x2F;strong&gt; 是以 Java 程式語言編寫的，所有用 Java 開發的程式都需要透過 &lt;strong&gt;Java 虛擬機（Java Virtual Machine，JVM）&lt;&#x2F;strong&gt; 來運行。因此，遊玩 Java Edition 需要安裝 Java。&lt;&#x2F;p&gt;
+&lt;p&gt;而 &lt;strong&gt;Bedrock Edition&lt;&#x2F;strong&gt; 則是使用 C++ 編寫的，它可以直接執行在作業系統上，無需額外安裝 Java 環境。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;java-jvm-yu-jdk-de-guan-xi&quot;&gt;Java、JVM 與 JDK 的關係&lt;&#x2F;h2&gt;
+&lt;p&gt;要理解 Java 與 JVM 的關係，就不得不提到 Java Development Kit（JDK）和 Java Runtime Environment（JRE）。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java 是一種程式語言，本身只是抽象的規範，不能直接執行程式碼。&lt;&#x2F;li&gt;
+&lt;li&gt;JDK（Java 開發工具包）包含 JRE，以及 Java 編譯器、開發工具等，主要供開發者使用。&lt;&#x2F;li&gt;
+&lt;li&gt;JRE（Java 運行環境）包含 JVM 以及 Java 標準函式庫，讓 Java 程式能夠執行。&lt;&#x2F;li&gt;
+&lt;li&gt;JVM 是負責執行 Java 程式的虛擬機，所有 Java 程式都必須透過 JVM 運行。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;對於 Minecraft 來說，執行 Java Edition 只需要 JRE 即可，但現代 Java 的發行方式通常是直接安裝 JDK，因此「安裝 Java」通常指的是安裝 JDK。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;minecraft-xu-yao-shen-mo-ban-ben-de-java&quot;&gt;Minecraft 需要什麼版本的 Java？&lt;&#x2F;h2&gt;
+&lt;p&gt;程式語言隨著時代演進會推出新版本，Minecraft 也會在新版本中採用更新的 Java。根據 &lt;a href=&quot;https:&#x2F;&#x2F;forum.gamer.com.tw&#x2F;C.php?bsn=18673&amp;amp;snA=201333&quot;&gt;Minecraft 巴哈姆特哈啦板的文章&lt;&#x2F;a&gt;可以知道各個版本對應的 Java 版本。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Minecraft 1.16 及更早版本使用 Java 8。&lt;&#x2F;li&gt;
+&lt;li&gt;Minecraft 1.17 至 1.20.4 建議使用 Java 17。&lt;&#x2F;li&gt;
+&lt;li&gt;Minecraft 1.20.5 及更新版本建議使用 Java 21。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;ru-he-an-zhuang-java&quot;&gt;如何安裝 Java？&lt;&#x2F;h2&gt;
+&lt;p&gt;如果用 Google 搜尋 Java，第一個結果就是 Java 8 的下載連結，如果要下載其他的 Java 版本，對於 Windows 系統可以到 &lt;a href=&quot;https:&#x2F;&#x2F;www.oracle.com&#x2F;tw&#x2F;java&#x2F;technologies&#x2F;downloads&#x2F;#java11-mac&quot;&gt;Oracle 網站&lt;&#x2F;a&gt;下載，而 Linux 系統可以使用內建的套件管理器安裝 OpenJDK（開源），macOS 則可以使用 Homebrew 安裝 OpenJDK。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tong-shi-an-zhuang-duo-ge-ban-ben-de-java&quot;&gt;同時安裝多個版本的 Java&lt;&#x2F;h2&gt;
+&lt;p&gt;如果同時玩很多個版本的 Minecraft，可能需要安裝多個版本的 Java，那麼開啟遊戲的時候 Minecraft 要怎麼知道要使用哪個 Java？要解決這個問題有兩種方法，第一種是找出不同版本的 Java 的安裝路徑，在遊戲開啟時告訴 Minecraft 要用哪個路徑。&lt;&#x2F;p&gt;
+&lt;p&gt;第二種方法（推薦）則是使用&lt;strong&gt;第三方啟動器&lt;&#x2F;strong&gt;如 Prism Launcher、CurseForge、Modrinth 等軟體，大部分的第三方啟動器不僅可以幫你管理遊戲版本、Java 版本，還能在上面安裝模組，十分方便。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>Minecraft 煙火機制</title>
+        <published>2024-02-26T00:00:00+00:00</published>
+        <updated>2024-02-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/mechanics-of-minecraft-fireworks/"/>
+        <id>https://natsucamellia.github.io/mechanics-of-minecraft-fireworks/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/mechanics-of-minecraft-fireworks/">&lt;p&gt;本篇透過研究 Minecraft 的程式碼，來解析煙火從合成、NBT 標籤、施放一直到爆炸並產生粒子的機制，當下版本為 Java 1.21。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;yi-huo-yao-qiu-firework-star&quot;&gt;一、火藥球 Firework Star&lt;&#x2F;h2&gt;
+&lt;p&gt;煙火必須要有火藥球才能綻放出絢麗的爆炸特效，火藥球的合成材料包括了火藥、染料、形狀材料以及附加效果材料。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-huo-yao-bi-yao&quot;&gt;1. 火藥（必要）&lt;&#x2F;h3&gt;
+&lt;p&gt;火藥球的合成需要恰好一個火藥。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;2-ran-liao-bi-yao&quot;&gt;2. 染料（必要）&lt;&#x2F;h3&gt;
+&lt;p&gt;火藥球的合成需要至少一個染料，不包含骨粉、青金石等替代材料。在火藥球中添加染料，會將染料本身的顏色加入初始顏色清單中，這份清單決定了煙火爆炸時粒子的初始顏色。此外，將合成好的火藥球與染料合成，會將顏色加入最終顏色清單中，決定煙火爆炸粒子的最終顏色。關於顏色如何分佈與變化，在之後的爆炸粒子中會有更深入的說明。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;3-xing-zhuang-cai-liao&quot;&gt;3. 形狀材料&lt;&#x2F;h3&gt;
+&lt;p&gt;遊戲中煙火爆炸會產生不同的形狀，一顆火藥球只能擁有一個爆炸形狀，以下是不同材料所對應的爆炸形狀：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下動畫來自 &lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&quot;&gt;Minecraft Wiki&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;材料&lt;&#x2F;th&gt;&lt;th&gt;形狀&lt;&#x2F;th&gt;&lt;th&gt;動畫&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;無&lt;&#x2F;td&gt;&lt;td&gt;小型球狀&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Small_Sphere).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Small_Sphere%29.gif&#x2F;200px-Firework_Star_%28Small_Sphere%29.gif?f2de6&quot; alt=&quot;Firework Star (Small Sphere).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;火焰彈&lt;&#x2F;td&gt;&lt;td&gt;大型球狀&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Large_Sphere).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Large_Sphere%29.gif&#x2F;200px-Firework_Star_%28Large_Sphere%29.gif?72744&quot; alt=&quot;Firework Star (Large Sphere).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;金粒&lt;&#x2F;td&gt;&lt;td&gt;星形&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Star_Shape).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Star_Shape%29.gif&#x2F;200px-Firework_Star_%28Star_Shape%29.gif?1777f&quot; alt=&quot;Firework Star (Star Shape).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;生物頭顱&lt;&#x2F;td&gt;&lt;td&gt;苦力怕形&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Creeper_Shape).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Creeper_Shape%29.gif&#x2F;200px-Firework_Star_%28Creeper_Shape%29.gif?e7af6&quot; alt=&quot;Firework Star (Creeper Shape).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;羽毛&lt;&#x2F;td&gt;&lt;td&gt;爆裂&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Burst).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Burst%29.gif&#x2F;200px-Firework_Star_%28Burst%29.gif?d9b30&quot; alt=&quot;Firework Star (Burst).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;4-fu-jia-xiao-guo-cai-liao&quot;&gt;4. 附加效果材料&lt;&#x2F;h3&gt;
+&lt;p&gt;遊戲中附加效果有閃爍與蹤跡兩種，可同時存在：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下動畫來自 &lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&quot;&gt;Minecraft Wiki&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;材料&lt;&#x2F;th&gt;&lt;th&gt;效果&lt;&#x2F;th&gt;&lt;th&gt;動畫&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;螢石粉&lt;&#x2F;td&gt;&lt;td&gt;閃爍&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Twinkle_effect).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Twinkle_effect%29.gif&#x2F;200px-Firework_Star_%28Twinkle_effect%29.gif?89cf5&quot; alt=&quot;Firework Star (Twinkle effect).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;鑽石&lt;&#x2F;td&gt;&lt;td&gt;蹤跡&lt;&#x2F;td&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;w&#x2F;File:Firework_Star_(Trail_effect).gif&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;zh.minecraft.wiki&#x2F;images&#x2F;thumb&#x2F;Firework_Star_%28Trail_effect%29.gif&#x2F;200px-Firework_Star_%28Trail_effect%29.gif?edaa8&quot; alt=&quot;Firework Star (Trail effect).gif&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;er-yan-huo&quot;&gt;二、煙火&lt;&#x2F;h2&gt;
+&lt;p&gt;煙火的合成材料包括火藥、紙以及火藥球。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-huo-yao-bi-yao-1&quot;&gt;1. 火藥（必要）&lt;&#x2F;h3&gt;
+&lt;p&gt;煙火中的火藥材料多寡決定了煙火的飛行時間，亦即從發射到爆炸的這段時間長度，可以加入一至三個火藥來為煙火提供不同的飛行時間。煙火的飛行時間公式為： $10 \times (火藥數量 + 1) + rand(6) + rand(7)$ 遊戲刻，其中 $rand(n)$ 為 $0$ 至 $n - 1$ 的隨機數字。平均飛行時間為 $5.5 + (10 \times 火藥數量 + 1)$ 遊戲刻，實際飛行時間的機率分佈會以平均飛行時間為中心，向左右遞減。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;2-zhi-bi-yao&quot;&gt;2. 紙（必要）&lt;&#x2F;h3&gt;
+&lt;p&gt;煙火的合成需要恰好一張紙。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;3-huo-yao-qiu&quot;&gt;3. 火藥球&lt;&#x2F;h3&gt;
+&lt;p&gt;在煙火中加入火藥球可以新增其效果（顏色、形狀與附加效果）至 NBT 標籤中，於爆炸時逐一釋放。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;san-nbt-biao-qian&quot;&gt;三、NBT 標籤&lt;&#x2F;h2&gt;
+&lt;p&gt;煙火是如何將火藥球的資訊保存，一路傳遞到煙火爆炸？煙火透過 NBT 標籤儲存火藥球的資訊，NBT 標籤內有多種標籤，其中煙火從物品到實體都會持續保有名為 &lt;code&gt;Explosions&lt;&#x2F;code&gt; 的 NBT 標籤。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;Explosions&lt;&#x2F;code&gt; 是一個列表，其中有多個火藥球 NBT 標籤。當製作煙火時，會把所有作為合成材料的火藥球之 NBT 標籤放進煙火的 &lt;code&gt;Explosions&lt;&#x2F;code&gt; 標籤。這個標籤看起來的樣子是：煙火有一個 NBT 標籤叫做 &lt;code&gt;Explosions&lt;&#x2F;code&gt;，裡面有很多火藥球 NBT 標籤，每個火藥球 NBT 標籤都有爆炸形狀、閃爍、軌跡等資訊。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;si-fa-she-yan-huo&quot;&gt;四、發射煙火&lt;&#x2F;h2&gt;
+&lt;p&gt;生成煙火實體（發射煙火）有三種方法，第一種是直接發射，即手持煙火物品對方塊使用，發射方向朝上；第二種是用弩發射，煙火可以替代箭矢作為弩的發射物被填充並射出，發射方向為準心瞄準的方向；第三種則是透過發射器發射，方向為發射器口朝向的方向，只有以發射器發射時不記錄發射者。此外，生成煙火實體時，實體會讀取召喚時使用之物品，進而讀取煙火的 NBT 標籤並儲存。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;wu-yan-huo-fei-xing-yu-bao-zha&quot;&gt;五、煙火飛行與爆炸&lt;&#x2F;h2&gt;
+&lt;p&gt;煙火實體在被生成時，會依照煙火物品合成所用的火藥數量，套進公式後初始化最大飛行時間。在之後的飛行時間內，每兩個遊戲刻會在煙火實體處發射煙火粒子，方向朝下，速度是煙火實體 Y 軸速度的一半。當達到最大飛行時間後，煙火實體便會爆炸，造成傷害並生成煙火爆炸子。&lt;&#x2F;p&gt;
+&lt;p&gt;煙火的傷害計算公式為 $damage = 5 + 2 \times \text{火藥球數量}$，爆炸時會對半徑五格內的生物造成傷害，傷害與距離的關係為 $damage \times \sqrt{\frac{5 - distance}{5}}$，當 $damage = 5$ 時如下圖所示，橫軸為距離，縱軸為傷害：
+&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;mechanics-of-minecraft-fireworks&#x2F;firework-distance-damage.png&quot; alt=&quot;煙火距離與傷害關係圖&quot; title=&quot;煙火距離與傷害關係圖&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;liu-yan-huo-bao-zha-zi&quot;&gt;六、煙火爆炸子&lt;&#x2F;h2&gt;
+&lt;p&gt;終於來到煙火的重頭戲，當煙火實體爆炸時會生成煙火爆炸子，煙火爆炸子和煙火實體一樣持有關於火藥球的 NBT 標籤，煙火爆炸子的任務是產生爆炸音效以及將火藥球逐個釋放。&lt;&#x2F;p&gt;
+&lt;p&gt;煙火爆炸子生成時，會產生煙火爆炸的音效，若火藥球有三個以上或是含有大型球狀的火藥球，則會產生較沈重的音效，反之會產生較清亮的音效。此外，若玩家與煙火爆炸子的距離為 16 格以上，此音效還會產生延遲，玩家看到爆炸後過一段時間才能聽到煙火的爆炸聲。&lt;&#x2F;p&gt;
+&lt;p&gt;每過兩個遊戲刻，煙火爆炸子會依序從 NBT 標籤中選擇一個火藥球，根據火藥球的資訊，在煙火爆炸子處產生指定形狀的大量爆炸粒子，也就是我們平常看到的煙火特效。在生成爆炸粒子時，會將軌跡、閃爍、透明度與顏色等資訊傳遞給爆炸粒子，其中初始顏色和最終顏色是分別從火藥球 NBT 標籤內的「初始顏色清單」與「最終顏色清單」隨機選擇，爆炸粒子行進時會由初始顏色逐漸轉變為最終顏色。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>Minecraft Vanilla+ 十個推薦模組</title>
+        <published>2023-08-02T00:00:00+00:00</published>
+        <updated>2023-08-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/minecraft-vanilla-10-mods/"/>
+        <id>https://natsucamellia.github.io/minecraft-vanilla-10-mods/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/minecraft-vanilla-10-mods/">&lt;p&gt;筆者認為模組新增了一些方塊，又或是更改了 Minecraft 原有的機制，會導致遊戲的體驗不夠純粹。筆者希望能夠享受 Minecraft 最原汁原味的體驗，因此搜羅了一些實用的 Vanilla+ 模組，標準是不破壞遊戲平衡以及不新增任何物品。以下模組皆可使用 Fabric 1.20.1 載入。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-appleskin&quot;&gt;1 AppleSkin&lt;&#x2F;h2&gt;
+&lt;p&gt;Minecraft 的飽食度（Saturation）原本是被隱藏的，使用 AppleSkin 可以將其顯示。此外還可以看到每種食物所提供的飢餓值與飽食度，將食物拿在手上也能預測將會回復多少血量。&lt;&#x2F;p&gt;
+&lt;p&gt;以下圖片來自於 AppleSkin 的 CurseForge 頁面。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;camo.githubusercontent.com&#x2F;a74d56cac12573e9a3527021d0d8d0489daf90c344708d3725fbcdc43d40b032&#x2F;68747470733a2f2f692e696d6775722e636f6d2f614866315178512e676966&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-ambientsounds&quot;&gt;2 AmbientSounds&lt;&#x2F;h2&gt;
+&lt;p&gt;AmbientSounds 讓你可以聽到蟬鳴鳥叫，為 Minecraft 增添了一分閒適。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-carry-on&quot;&gt;3 Carry On&lt;&#x2F;h2&gt;
+&lt;p&gt;搬家時要搬箱子太麻煩了嗎？動物總是對你手中的食物無動於衷？Carry On 可以讓你搬起箱子、熔爐、漏斗、生怪磚等方塊，而保持其內容物，甚至能夠將動物抱起！只要空出雙手按下 Shift 右鍵，即可抱起方塊生物！&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-entity-culling&quot;&gt;4 Entity Culling&lt;&#x2F;h2&gt;
+&lt;p&gt;Minecraft 會停止渲染在你身後的物體，但是為什麼 Minecraft 還是要渲染那些因地形使你看不見的生物呢？Entity Culling 幫你停止渲染他們，讓你的 FPS 大幅提升！&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-jade&quot;&gt;5 Jade&lt;&#x2F;h2&gt;
+&lt;p&gt;Jade 是一個抬頭顯示的模組，可以讓我們看到準心所指的是什麼方塊，以及該方塊的更多資訊如破壞工具、內容物、作物生長進度等，是非常實用的模組！&lt;&#x2F;p&gt;
+&lt;p&gt;以下圖片來自於 Jade 的 CurseForge 頁面。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;media.forgecdn.net&#x2F;attachments&#x2F;546&#x2F;809&#x2F;6.gif&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;6-mouse-tweaks&quot;&gt;6 Mouse Tweaks&lt;&#x2F;h2&gt;
+&lt;p&gt;這是一個很經典的模組，筆者從剛玩 Minecraft 時就存在了，導致筆者分不清哪些功能是原版的還是這個模組提供的。Mouse Tweaks 讓滑鼠在操作物品欄時有更多的功能，像是把所有同種類的物品放到箱子、在工作台上每個格子只放一個物品等等，還有更多功能可以自行研究探索。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;7-terralith&quot;&gt;7 Terralith&lt;&#x2F;h2&gt;
+&lt;p&gt;你是否也喜歡壯觀的地形，但卻又深受過多的模組物品困擾呢？Forge 有 BOP，Fabric 有 BYG，這兩個模組都新增太多花花草草了，總是讓筆者在整理箱子時感到心累。幸好有 Terralith 這個雙平台的模組，Terralith 不新增新方塊，僅使用 Minecraft 原版的方塊來搭建新的生態系，裡面的生態系一個比一個還要美麗，筆者認為美觀上贏過上面兩個模組！&lt;&#x2F;p&gt;
+&lt;p&gt;以下圖片來自於 Terralith 的 CurseForge 頁面。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.imgur.com&#x2F;l6SmhyG.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.imgur.com&#x2F;JXwqw7u.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.imgur.com&#x2F;cPec4mY.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;8-sound-physics-remastered&quot;&gt;8 Sound Physics Remastered&lt;&#x2F;h2&gt;
+&lt;p&gt;Sound Physics Remastered 強化了聲音的細節表現，像是走在方塊上的聲音、在洞穴中的回音等，讓你在遊玩時更能身歷其境。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;9-sodium&quot;&gt;9 Sodium&lt;&#x2F;h2&gt;
+&lt;p&gt;Sodium 優化 Minecraft 的渲染引擎，將 FPS 推升至原本的兩倍以上，已經是 Fabric 的必裝模組了。目前最新版本已不在 CurseForge 上提供，需要到 Modrinth 下載。&lt;&#x2F;p&gt;
+&lt;p&gt;以下圖片來自於 Sodium 的 CurseForge 頁面。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.imgur.com&#x2F;TzLurlG.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;10-iris-shaders-iris&quot;&gt;10 Iris Shaders ( Iris )&lt;&#x2F;h2&gt;
+&lt;p&gt;既然 Sodium 已經為我們提升了 FPS，那就來裝個光影吧！Iris 是光影載入器，基本上相容於 Optifine 的光影包都能使用。需要安裝 Sodium 才能使用。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>Minecraft 礦物掉落</title>
+        <published>2023-02-07T00:00:00+00:00</published>
+        <updated>2023-02-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/minecraft-ore-drop/"/>
+        <id>https://natsucamellia.github.io/minecraft-ore-drop/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/minecraft-ore-drop/">&lt;p&gt;不想看分析可以直接下拉看&lt;strong&gt;期望值整理&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;Minecraft 中礦物掉落的公式大多使用 &lt;code&gt;minecraft:ore_drop&lt;&#x2F;code&gt; 公式，數學式為：&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+count * (max(0, random(level + 2) - 1) + 1)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;其中 count 為 1 的礦物以下稱為&lt;strong&gt;單一掉落型&lt;&#x2F;strong&gt;礦物，如煤炭、鑽石， count 不為 1 的礦物稱為&lt;strong&gt;多重掉落型&lt;&#x2F;strong&gt;礦物，如銅、青金石。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dan-yi-diao-luo&quot;&gt;單一掉落&lt;&#x2F;h2&gt;
+&lt;p&gt;從運算結果來看，可以理解為：掉落一個的權重為 2 ，每有一等幸運，就會多一點權重再&lt;strong&gt;額外掉落&lt;&#x2F;strong&gt;一個，用表格說明：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;幸運&lt;&#x2F;th&gt;&lt;th&gt;1&lt;&#x2F;th&gt;&lt;th&gt;2&lt;&#x2F;th&gt;&lt;th&gt;3&lt;&#x2F;th&gt;&lt;th&gt;4&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;level=0&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=1&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=2&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=3&lt;&#x2F;td&gt;&lt;td&gt;2&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;機率的話則如下表：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;drop&lt;&#x2F;th&gt;&lt;th&gt;1&lt;&#x2F;th&gt;&lt;th&gt;2&lt;&#x2F;th&gt;&lt;th&gt;3&lt;&#x2F;th&gt;&lt;th&gt;4&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;level=0&lt;&#x2F;td&gt;&lt;td&gt;1.00&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=1&lt;&#x2F;td&gt;&lt;td&gt;0.66&lt;&#x2F;td&gt;&lt;td&gt;0.33&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=2&lt;&#x2F;td&gt;&lt;td&gt;0.50&lt;&#x2F;td&gt;&lt;td&gt;0.25&lt;&#x2F;td&gt;&lt;td&gt;0.25&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=3&lt;&#x2F;td&gt;&lt;td&gt;0.40&lt;&#x2F;td&gt;&lt;td&gt;0.20&lt;&#x2F;td&gt;&lt;td&gt;0.20&lt;&#x2F;td&gt;&lt;td&gt;0.20&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;duo-zhong-diao-luo&quot;&gt;多重掉落&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;礦物&lt;&#x2F;th&gt;&lt;th&gt;count&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;銅礦&lt;&#x2F;td&gt;&lt;td&gt;2~6&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;青金石礦&lt;&#x2F;td&gt;&lt;td&gt;4~9&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;地獄金礦&lt;&#x2F;td&gt;&lt;td&gt;2~6&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;這三種礦物的 &lt;code&gt;count&lt;&#x2F;code&gt; 機率為&lt;strong&gt;平均分佈&lt;&#x2F;strong&gt;，總掉落計算方法為先算出 &lt;code&gt;count&lt;&#x2F;code&gt; ，再乘上 &lt;code&gt;(max(0, random(level + 2) - 1) + 1)&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;guan-yu-hong-shi&quot;&gt;關於紅石&lt;&#x2F;h2&gt;
+&lt;p&gt;紅石所使用的公式並不是 &lt;code&gt;minecraft:ore_drop&lt;&#x2F;code&gt; ，而是使用 &lt;code&gt;minecraft:uniform_bonus_count&lt;&#x2F;code&gt; ，紅石的 count 為 4~5 ，機率各半。&lt;&#x2F;p&gt;
+&lt;p&gt;掉落 &lt;code&gt;count&lt;&#x2F;code&gt; 的權重為 1 ，每有一等幸運，就會多一點權重再額外掉落一個，以 &lt;code&gt;count=4&lt;&#x2F;code&gt; 為例用表格說明：&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;drop&lt;&#x2F;th&gt;&lt;th&gt;4&lt;&#x2F;th&gt;&lt;th&gt;5&lt;&#x2F;th&gt;&lt;th&gt;6&lt;&#x2F;th&gt;&lt;th&gt;7&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;level=0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=2&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=3&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;qi-wang-zhi-zheng-li&quot;&gt;期望值整理&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;幸運&lt;&#x2F;th&gt;&lt;th&gt;單一掉落型&lt;&#x2F;th&gt;&lt;th&gt;銅礦＆地獄金礦&lt;&#x2F;th&gt;&lt;th&gt;青金石礦&lt;&#x2F;th&gt;&lt;th&gt;紅石礦&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;level=0&lt;&#x2F;td&gt;&lt;td&gt;1.00&lt;&#x2F;td&gt;&lt;td&gt;4.00&lt;&#x2F;td&gt;&lt;td&gt;6.50&lt;&#x2F;td&gt;&lt;td&gt;4.50&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=1&lt;&#x2F;td&gt;&lt;td&gt;1.33&lt;&#x2F;td&gt;&lt;td&gt;5.33&lt;&#x2F;td&gt;&lt;td&gt;8.66&lt;&#x2F;td&gt;&lt;td&gt;5.00&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=2&lt;&#x2F;td&gt;&lt;td&gt;1.75&lt;&#x2F;td&gt;&lt;td&gt;7.00&lt;&#x2F;td&gt;&lt;td&gt;11.375&lt;&#x2F;td&gt;&lt;td&gt;5.50&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;level=3&lt;&#x2F;td&gt;&lt;td&gt;2.20&lt;&#x2F;td&gt;&lt;td&gt;8.80&lt;&#x2F;td&gt;&lt;td&gt;14.30&lt;&#x2F;td&gt;&lt;td&gt;6.00&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+</content>
+        
+    </entry>
+</feed>

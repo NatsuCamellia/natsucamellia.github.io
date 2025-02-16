@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Minecraft 與 Java 的關係 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Minecraft 與 Java 的關係
+    </h1>
+    <p class="post-date">
+      Published on 2025-02-16
+    </p>
+  </header>
+  <article>
+    <h2 id="wei-shen-mo-wan-minecraft-xu-yao-an-zhuang-java">為什麼玩 Minecraft 需要安裝 Java？</h2>
+<p>Minecraft 主要分為兩個版本：<strong>Java Edition</strong> 和 <strong>Bedrock Edition</strong>。<strong>Java Edition</strong> 是以 Java 程式語言編寫的，所有用 Java 開發的程式都需要透過 <strong>Java 虛擬機（Java Virtual Machine，JVM）</strong> 來運行。因此，遊玩 Java Edition 需要安裝 Java。</p>
+<p>而 <strong>Bedrock Edition</strong> 則是使用 C++ 編寫的，它可以直接執行在作業系統上，無需額外安裝 Java 環境。</p>
+<h2 id="java-jvm-yu-jdk-de-guan-xi">Java、JVM 與 JDK 的關係</h2>
+<p>要理解 Java 與 JVM 的關係，就不得不提到 Java Development Kit（JDK）和 Java Runtime Environment（JRE）。</p>
+<ul>
+<li>Java 是一種程式語言，本身只是抽象的規範，不能直接執行程式碼。</li>
+<li>JDK（Java 開發工具包）包含 JRE，以及 Java 編譯器、開發工具等，主要供開發者使用。</li>
+<li>JRE（Java 運行環境）包含 JVM 以及 Java 標準函式庫，讓 Java 程式能夠執行。</li>
+<li>JVM 是負責執行 Java 程式的虛擬機，所有 Java 程式都必須透過 JVM 運行。</li>
+</ul>
+<p>對於 Minecraft 來說，執行 Java Edition 只需要 JRE 即可，但現代 Java 的發行方式通常是直接安裝 JDK，因此「安裝 Java」通常指的是安裝 JDK。</p>
+<h2 id="minecraft-xu-yao-shen-mo-ban-ben-de-java">Minecraft 需要什麼版本的 Java？</h2>
+<p>程式語言隨著時代演進會推出新版本，Minecraft 也會在新版本中採用更新的 Java。根據 <a href="https://forum.gamer.com.tw/C.php?bsn=18673&amp;snA=201333">Minecraft 巴哈姆特哈啦板的文章</a>可以知道各個版本對應的 Java 版本。</p>
+<ul>
+<li>Minecraft 1.16 及更早版本使用 Java 8。</li>
+<li>Minecraft 1.17 至 1.20.4 建議使用 Java 17。</li>
+<li>Minecraft 1.20.5 及更新版本建議使用 Java 21。</li>
+</ul>
+<h2 id="ru-he-an-zhuang-java">如何安裝 Java？</h2>
+<p>如果用 Google 搜尋 Java，第一個結果就是 Java 8 的下載連結，如果要下載其他的 Java 版本，對於 Windows 系統可以到 <a href="https://www.oracle.com/tw/java/technologies/downloads/#java11-mac">Oracle 網站</a>下載，而 Linux 系統可以使用內建的套件管理器安裝 OpenJDK（開源），macOS 則可以使用 Homebrew 安裝 OpenJDK。</p>
+<h2 id="tong-shi-an-zhuang-duo-ge-ban-ben-de-java">同時安裝多個版本的 Java</h2>
+<p>如果同時玩很多個版本的 Minecraft，可能需要安裝多個版本的 Java，那麼開啟遊戲的時候 Minecraft 要怎麼知道要使用哪個 Java？要解決這個問題有兩種方法，第一種是找出不同版本的 Java 的安裝路徑，在遊戲開啟時告訴 Minecraft 要用哪個路徑。</p>
+<p>第二種方法（推薦）則是使用<strong>第三方啟動器</strong>如 Prism Launcher、CurseForge、Modrinth 等軟體，大部分的第三方啟動器不僅可以幫你管理遊戲版本、Java 版本，還能在上面安裝模組，十分方便。</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

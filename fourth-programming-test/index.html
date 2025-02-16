@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    第四次計程考試 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      第四次計程考試
+    </h1>
+    <p class="post-date">
+      Published on 2022-11-28
+    </p>
+  </header>
+  <article>
+    <p>今天是禮拜一，又來到了三週一次的計程考試。前天我幾乎整天都在寫程式，而昨天就更誇張了，只有最後一兩個小時讀微積分，其餘整天都是在寫程式。我寫程式的原因不單是因為為了練習今天的考試範圍，更是因為在 Judge Girl 上解題的成就感太強了，簡單分析原因：</p>
+<ol>
+<li>題目做完會打勾，分類還會填星星，沒做空心，做過半滿，做完全滿。<img src="https://natsucamellia.github.io/fourth-programming-test/star_check.png" alt="打勾和填星星" /></li>
+<li>題目難度超出舒適圈一點點，解題的成就感非常充足。</li>
+<li>網站有解題數量排行，隨著自己解題數的上升，自己的排名也不斷飛升，這是最大的成就感來源，也是讓我題目一做在做的原因，因為真的太令人著迷了，到現在已經是歷史 59 位、年段 2 位了。</li>
+<li>每題的程式速度也有排行，我會稍微讓自己程式跑快一點，如果有贏過別人很多也會很有成就感，例如別人要 1.5 s，我卻只要 100 ms 以內，算是滿足虛榮心吧。</li>
+</ol>
+<p>我這兩天總共做了約 23 題，看起來不是個大數字，但是若以每題一小時來看，那就是 23 小時，雖然實際上應該沒有這麼久。</p>
+<p>我已經把 Judge Girl 的 motto 設成了：</p>
+<blockquote>
+<p>I’m not the best, but I’m trying my best.</p>
+</blockquote>
+<h2 id="qian-wang-kao-chang">前往考場</h2>
+<p>早上騎車快到系館時，才發現忘記帶課本了，教授說考試的時候可以看課本，但我完全沒看過，估計這次也不會看，但是保險起見我還是回去宿舍拿了，額外花了不少時間。進到電腦教室已經約 9:05 了，我走到白板前查看座位表，發現怎麼是梅花座，但我也瞬間就認知到有一半的人都停休了，沒退選的人再被當一些的話，教授開學說出的預言就成真了：</p>
+<blockquote>
+<p>看看你左邊的同學，再看看右邊的同學，你們其中一個會停休，一個會被當。</p>
+</blockquote>
+<p>教授說他每年開學都會都會跟同學說怎麼做才不會被當，但每年還是有大比例會被當掉。連結：<a href="https://www.facebook.com/pangfeng.liu/posts/pfbid02jrExcvJHNnF82suS9mDUsi6FL5ETfRUDt31EP2zCnzFKvUpfLrS7BJ5RN1zEikU4l">教授開學警言</a>。</p>
+<h2 id="kao-shi-kai-shi">考試開始</h2>
+<h3 id="pa-convert-a-uint64-t-array-cc-2-2-2-20min">pA. Convert a uint64_t array, CC=2/2.2, 20min</h3>
+<p>第一題看起來很簡單，CC 只有 2.2。題意是給一堆 64 bit 的 unsigned integer ，然後每次讀最右邊的五個 bit ，就可以表示 0 ~ 31 ，然後要把這五個 bit 代表的數字轉成字元 a=0, b=1…, z=25，每個 integer 會讀到 12 個字元，真的是挺簡單的。練習的題庫中有一題是要從左邊開始讀，還要要把全部串起來讀，比這個考試的題目還麻煩，雖然中途遇到了括號的 BUG ，不過我還是三兩下就做出來了，花了約二十分鐘。</p>
+<h3 id="pc-friend-cover-cc-10-10-6-80min">pC. Friend Cover, CC=10/10.6, 80min</h3>
+<p>我先做這題是因為 pB 看起來很複雜，而且教授還特別說要 Error Check，還表示說很麻煩。</p>
+<blockquote>
+<p>有 N 個人，給定 M 對朋友，找出最小組合，使得每對朋友都至少有一個人被選中。</p>
+</blockquote>
+<p>我當下的想法就是想到昨天新學到的東西，先選一個人，然後把他的朋友從備選名單中劃掉，再繼續從備選名單中挑選，如此遞迴下去直到備選名單清空。</p>
+<p>我做了很久，但答案始終不對，我花了半個小時 Debug 都找不到問題，後來重新審視演算法，發現我的演算法從頭就錯了。</p>
+<p>我一開始的想法會有一個問題，我用例子來解釋：</p>
+<p>假設有三個人，三對朋友，分別是</p>
+<p><code>(0, 1), (1, 2), (0,2)</code></p>
+<p>如果我按照我原本的想法選了 0 之後，1 和 2 就被劃掉了，第二對便不會滿足。</p>
+<p>所以到最後我還是只能慢慢地暴搜，到地回最底部再 Check，印象中很快就做出來了。丟上去 Judge ，AC！我超驚訝，因為這題後面 50 分是要解決 TLE 才能拿到的，也許是我練習量多了，我自然而然就會用效率比較好的方式來做，再加上我用了 bit operation 來加速，bit operation 真是個好東西，之後再寫幾篇文章來傳教好了。</p>
+<h3 id="pb-parse-a-boolean-operation-cc-15-22-8-80min">pB. Parse a boolean operation, CC=15/22.8, 80min</h3>
+<blockquote>
+<p>給予多個 bit opertion 字串，輸出結果，如果語法錯誤則輸出 invalid，直到 EOF。</p>
+</blockquote>
+<p>這題想法很簡單，而且他有給提示，我很快就做出來了，範例測資也全對，我送上 Judge ，WA 0。這場考試怎麼那麼令我驚訝啦，只對了 Sample ，令我百思不得其解，一樣 Debug 了三十分鐘才發現是 <code>A &amp;&amp; B</code> 及 <code>A || B</code> 順序的問題，我把 <code>parse()</code> 放在 B 的位置，A 放先前得到的布林，這導致很有可能不會執行 <code>parse()</code> ，就導致錯誤了，修正後便得到 WA 70 了。</p>
+<p>考試時間剩下二十分鐘，我已經得了 270 分，累積分數也已經過了學期及格線了，但我還想做出剩下的三十分，也就是要進行 Error Check。我一步一步慢慢找出可能有語法錯誤的地方，隨著時間接近下課，我的心跳愈來愈快，但結果始終都是 WA 70。最後一個 Submit 約在 12:18 ，終於被我找出所有的 Error，成功拿到 AC。</p>
+<h2 id="kao-shi-jie-shu">考試結束</h2>
+<p>我心情極度雀躍，上次破台是第一次，之後成績就慢慢降低，而這次終於又破台了，看來是努力的成果呢！我每題的 CC 都低於真強者的平均，甚至 pB 還低了 7 個 CC ，後來看到成績分布，考試人數 36 ，只有兩個破台，而其中一個就是我，多令人滿足啊。</p>
+<p><img src="https://natsucamellia.github.io/fourth-programming-test/overall.png" alt="總成績分佈" />
+<img src="https://natsucamellia.github.io/fourth-programming-test/each.png" alt="單題成績分佈" /></p>
+<p>我愈來愈愛 Judge Girl 了，我正在考慮之後要不要當助教，可以碰後臺，甚至是出題審題，好想要為這個網站貢獻一點。</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>
