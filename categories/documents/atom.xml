@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-tw">
+    <title>NatsuCamellia - Documents</title>
+    <subtitle>When camellia blooms in summer.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://natsucamellia.github.io/categories/documents/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-08-15T00:00:00+00:00</updated>
+    <id>https://natsucamellia.github.io/categories/documents/atom.xml</id>
+    <entry xml:lang="zh-tw">
+        <title>Text Formatting Examples</title>
+        <published>2024-02-22T00:00:00+00:00</published>
+        <updated>2024-08-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/text-formatting/"/>
+        <id>https://natsucamellia.github.io/text-formatting/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/text-formatting/">&lt;h1 id=&quot;markdown-support&quot;&gt;Markdown Support&lt;&#x2F;h1&gt;
+&lt;p&gt;As always, Jekyll offers support for GitHub Flavored Markdown, which allows you to format your posts using the &lt;a href=&quot;https:&#x2F;&#x2F;guides.github.com&#x2F;features&#x2F;mastering-markdown&#x2F;&quot;&gt;Markdown syntax&lt;&#x2F;a&gt;. Examples of these text formatting features can be seen below. You can find this post in the &lt;code&gt;_posts&lt;&#x2F;code&gt; directory.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;basic-formatting&quot;&gt;Basic Formatting&lt;&#x2F;h2&gt;
+&lt;p&gt;With Markdown, it is possible to emphasize words by making them &lt;em&gt;italicized&lt;&#x2F;em&gt;, using &lt;em&gt;astericks&lt;&#x2F;em&gt; or &lt;em&gt;underscores&lt;&#x2F;em&gt;, or making them &lt;strong&gt;bold&lt;&#x2F;strong&gt;, using &lt;strong&gt;double astericks&lt;&#x2F;strong&gt; or &lt;strong&gt;double underscores&lt;&#x2F;strong&gt;. Of course, you can combine those two formats, with both &lt;em&gt;&lt;strong&gt;bold and italicized&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; text, using any combination of the above syntax. You can also add a strikethrough to text using a &lt;del&gt;double tilde&lt;&#x2F;del&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;paragraphs&quot;&gt;Paragraphs&lt;&#x2F;h2&gt;
+&lt;p&gt;This is what a paragraph looks like. For the purpose of demonstration, the rest of this paragraph and the next paragraph after will mean absolutely nothing. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;&#x2F;p&gt;
+&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;headings&quot;&gt;Headings&lt;&#x2F;h2&gt;
+&lt;p&gt;Sometimes it is useful to have different levels of headings to structure your documents. Start lines with &lt;code&gt;#&lt;&#x2F;code&gt; to create headings. Multiple &lt;code&gt;##&lt;&#x2F;code&gt; in a row denote smaller heading size. The following demonstrate the full range of heading sizes:&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;heading-one-h1&quot;&gt;Heading One (h1)&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;heading-two-h2&quot;&gt;Heading Two (h2)&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;heading-three-h3&quot;&gt;Heading Three (h3)&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;heading-four-h4&quot;&gt;Heading Four (h4)&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;heading-five-h5&quot;&gt;Heading Five (h5)&lt;&#x2F;h5&gt;
+&lt;h6 id=&quot;heading-six-h6&quot;&gt;Heading Six (h6)&lt;&#x2F;h6&gt;
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;&#x2F;h2&gt;
+&lt;p&gt;You can create an inline link by wrapping link text in square brackets &lt;code&gt;[ ]&lt;&#x2F;code&gt;, and then wrapping the URL in parentheses &lt;code&gt;( )&lt;&#x2F;code&gt;. For example, it is very easy to &lt;a href=&quot;http:&#x2F;&#x2F;google.com&quot;&gt;link to Google!&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;&#x2F;h2&gt;
+&lt;p&gt;Blockquotes are useful for denoting quotes, or highlighting a large block of text. Single line blockquote:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This quote will change your life.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Multi line blockquote with a cite reference:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;People think focus means saying yes to the thing you&#x27;ve got to focus on. But that&#x27;s not what it means at all. It means saying no to the hundred other good ideas that there are. You have to pick carefully. I&#x27;m actually as proud of the things we haven&#x27;t done as the things I have done. Innovation is saying no to 1,000 things.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;&#x2F;h2&gt;
+&lt;p&gt;Code blocks are part of the Markdown spec, but syntax highlighting isn&#x27;t. However, many renderers - like GitHub or most Jekyll themes - support syntax highlighting. Which languages are supported and how those language names should be written will vary from renderer to renderer. You can find the full list of supported programming languages &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jneen&#x2F;rouge&#x2F;wiki&#x2F;List-of-supported-languages-and-lexers&quot;&gt;here&lt;&#x2F;a&gt;. Also, it is possible to do &lt;code&gt;inline code blocks&lt;&#x2F;code&gt;, by wrapping the text in &lt;code&gt;`&lt;&#x2F;code&gt; quotations.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#eff1f5;color:#4f5b66;&quot;&gt;&lt;code&gt;&lt;span&gt;No language indicated, so no syntax highlighting.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;print_hi&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;puts &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hi, &lt;&#x2F;span&gt;&lt;span&gt;#{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;}&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;print_hi(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Tom&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Another option is to embed your code through &lt;a href=&quot;https:&#x2F;&#x2F;en.support.wordpress.com&#x2F;gist&#x2F;&quot;&gt;Gist&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;images&quot;&gt;Images&lt;&#x2F;h2&gt;
+&lt;p&gt;To add an image, use &lt;code&gt;![alt text](&amp;lt;Image url&amp;gt; &quot;Image meta title&quot;)&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;text-formatting&#x2F;mountains.jpg&quot; alt=&quot;Mountain picture&quot; title=&quot;Mountain&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;unordered-and-numbered-lists&quot;&gt;Unordered and Numbered Lists&lt;&#x2F;h2&gt;
+&lt;p&gt;You can make an unordered and nested list by preceding one or more lines of text with &lt;code&gt;-&lt;&#x2F;code&gt;, &lt;code&gt;*&lt;&#x2F;code&gt;, or &lt;code&gt;+&lt;&#x2F;code&gt;, and indenting sublists. The following lists show the full range of possible list formats.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;List item one
+&lt;ul&gt;
+&lt;li&gt;List item one
+&lt;ul&gt;
+&lt;li&gt;List item one&lt;&#x2F;li&gt;
+&lt;li&gt;List item two&lt;&#x2F;li&gt;
+&lt;li&gt;List item three&lt;&#x2F;li&gt;
+&lt;li&gt;List item four&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;List item two&lt;&#x2F;li&gt;
+&lt;li&gt;List item three&lt;&#x2F;li&gt;
+&lt;li&gt;List item four&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;List item two&lt;&#x2F;li&gt;
+&lt;li&gt;List item three&lt;&#x2F;li&gt;
+&lt;li&gt;List item four&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Numbered lists are made by using numbers instead of bullet points.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;List item one
+&lt;ol&gt;
+&lt;li&gt;List item one
+&lt;ol&gt;
+&lt;li&gt;List item one&lt;&#x2F;li&gt;
+&lt;li&gt;List item two&lt;&#x2F;li&gt;
+&lt;li&gt;List item three&lt;&#x2F;li&gt;
+&lt;li&gt;List item four&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;List item two&lt;&#x2F;li&gt;
+&lt;li&gt;List item three&lt;&#x2F;li&gt;
+&lt;li&gt;List item four&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;List item two&lt;&#x2F;li&gt;
+&lt;li&gt;List item three&lt;&#x2F;li&gt;
+&lt;li&gt;List item four&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;mathjax-example&quot;&gt;MathJax Example&lt;&#x2F;h2&gt;
+&lt;p&gt;The &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Schr%C3%B6dinger_equation&quot;&gt;Schrödinger equation&lt;&#x2F;a&gt; is a partial differential equation that describes how the quantum state of a quantum system changes with time:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r},t)\right ] \Psi(\mathbf{r},t)
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Joseph-Louis_Millennial&quot;&gt;Joseph-Louis Millennial&lt;&#x2F;a&gt; was an Italian mathematician and astronomer who was responsible for the formulation of Lagrangian mechanics, which is a reformulation of Newtonian mechanics.&lt;&#x2F;p&gt;
+&lt;p&gt;$$ \frac{\mathrm{d}}{\mathrm{d}t} \left ( \frac {\partial  L}{\partial \dot{q}_j} \right ) =  \frac {\partial L}{\partial q_j} $$&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Title 1&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: center&quot;&gt;Title 2&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Title 3&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: right&quot;&gt;Title 4&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;lorem&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;lorem ipsum&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;lorem ipsum dolor&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: center&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;lorem ipsum dolor sit&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;&#x2F;h2&gt;
+&lt;p&gt;HTML defines a long list of available inline tags, which you can mix with Markdown if you like. A complete list of which can be found on the &lt;a href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element&quot;&gt;Mozilla Developer Network&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;horizontal-rule&quot;&gt;Horizontal Rule&lt;&#x2F;h2&gt;
+&lt;p&gt;Can be created by having three or more hyphens &lt;code&gt;---&lt;&#x2F;code&gt;, asterisks &lt;code&gt;***&lt;&#x2F;code&gt;, or underscores &lt;code&gt;___&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;useful-resources&quot;&gt;Useful Resources&lt;&#x2F;h2&gt;
+&lt;p&gt;More information on Markdown can be found at the following links:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;adam-p&#x2F;markdown-here&#x2F;wiki&#x2F;Markdown-Here-Cheatsheet#code&quot;&gt;Markdown Here Cheatsheet&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.unexpected-vortices.com&#x2F;sw&#x2F;rippledoc&#x2F;quick-markdown-example.html&quot;&gt;Quick Markdown Example&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;daringfireball.net&#x2F;projects&#x2F;markdown&#x2F;basics&quot;&gt;Markdown Basics&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.github.com&#x2F;gfm&#x2F;&quot;&gt;GitHub Flavoured Markdown Spec&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;help.github.com&#x2F;articles&#x2F;basic-writing-and-formatting-syntax&#x2F;#lists&quot;&gt;Basic writing and formatting syntax&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

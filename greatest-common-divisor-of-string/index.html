@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    最長公因字串 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      最長公因字串
+    </h1>
+    <p class="post-date">
+      Published on 2024-08-18
+    </p>
+  </header>
+  <article>
+    <p>最近在 LeetCode 上面看到一題簡單卻有意思的題目 <a href="https://leetcode.com/problems/greatest-common-divisor-of-strings/?envType=study-plan-v2&amp;envId=leetcode-75">Greatest Common Divisor of Strings - LeetCode</a>，除了遍歷所有字首和使用輾轉相除法的解法外，我還看到了一個需要一些思考與沒那麼 trivial 的解法：</p>
+<pre data-lang="kotlin" style="background-color:#eff1f5;color:#4f5b66;" class="language-kotlin "><code class="language-kotlin" data-lang="kotlin"><span style="color:#b48ead;">class </span><span style="color:#d08770;">Solution</span><span> {
+</span><span>    </span><span style="color:#b48ead;">fun </span><span style="color:#8fa1b3;">gcdOfStrings</span><span>(str1: </span><span style="color:#b48ead;">String</span><span>, str2: </span><span style="color:#b48ead;">String</span><span>): </span><span style="color:#b48ead;">String</span><span> {
+</span><span>        </span><span style="color:#b48ead;">if</span><span> (str1 + str2 != str2 + str1) {
+</span><span>            </span><span style="color:#b48ead;">return </span><span>&quot;&quot;
+</span><span>        }
+</span><span>        
+</span><span>        </span><span style="color:#b48ead;">return</span><span> str1.substring(</span><span style="color:#d08770;">0</span><span>, gcd(str1.length, str2.length))
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fun </span><span style="color:#8fa1b3;">gcd</span><span>(a: </span><span style="color:#b48ead;">Int</span><span>, b: </span><span style="color:#b48ead;">Int</span><span>) : </span><span style="color:#b48ead;">Int</span><span> {
+</span><span>        </span><span style="color:#b48ead;">if</span><span> (b == </span><span style="color:#d08770;">0</span><span>) {
+</span><span>            </span><span style="color:#b48ead;">return</span><span> a
+</span><span>        } </span><span style="color:#b48ead;">else</span><span> {
+</span><span>            </span><span style="color:#b48ead;">return</span><span> gcd(b, a % b)
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<blockquote>
+<p>以下推導皆基於 $S_1, S_2$ 為<strong>有限非空字串</strong>的假設。</p>
+</blockquote>
+<h2 id="pan-duan-gong-yin-zi-chuan-shi-fou-cun-zai">判斷公因字串是否存在</h2>
+<p>首先我們可以觀察，如果公因字串 $C$ 存在的話，兩個字串都將是由多個 $C$ 串接起來的字串（CCC...），因此 $S_1 + S_2 = S_2 + S_1$；反過來說如果 $S_1 + S_2 \ne S_2 + S_1$ 就代表它們沒有公因字串，所以我們可以直接回傳空字串。</p>
+<p>那 $S_1 + S_2 = S_2 + S_1$ 就<strong>一定有</strong>公因字串嗎？如果是這個樣子的話，那我們需要證明以下命題：</p>
+<blockquote>
+<p>$S_1 + S_2 = S_2 + S_1$ $\iff$ $S_1, S_2$ 有公因字串 $C$</p>
+</blockquote>
+<p>$\impliedby$ 方向已經在上面證明過了，現在證明 $\implies$ 方向。</p>
+<h3 id="s-1-s-2-s-2-s-1-implies-s-1-s-2-you-gong-yin-zi-chuan-c">$S_1 + S_2 = S_2 + S_1$ $\implies$ $S_1, S_2$ 有公因字串 $C$</h3>
+<p>我們使用數學歸納法，以 $S_1 + S_2$ 的字串長度 $L$ 為變數。</p>
+<p><strong>起始步驟</strong>：當 $L = 2$，則 $S_1$ 與 $S_2$ 的長度皆為 $1$，很明顯 $S_1 = S_2 = C$。</p>
+<p><strong>推遞步驟</strong>：假設在 $2 \le L &lt; k$ 時皆成立，當 $L = k$ 時，若 $S_1$ 與 $S_2$ 長度相同，可得 $S_1 = S_2 = C$；反之不失一般性假設 $S_1$ 比較長，我們用 <code>()</code> 代表 $S_1$、<code>[]</code> 代表 $S_2$，則 $S_1 + S_2 = S_2 + S_1$ 可以這樣表示：</p>
+<ul>
+<li>$S_1 + S_2$：<code>(________)[___]</code></li>
+<li>$S_2 + S_1$：<code>[___](________)</code></li>
+</ul>
+<p>我們把兩個 $S_1$ 重疊的地方用 $x$ 表示，$S_2$ 用 $y$ 表示：</p>
+<ul>
+<li>$S_1 + S_2$：<code>( y || x )[ y ]</code></li>
+<li>$S_2 + S_1$：<code>[ y ]( x || y )</code></li>
+</ul>
+<p>我們得到 $S_1 = y + x$ （上式）且 $S_1 = x + y$ （下式），也就是 $y + x = x + y$，又 $x, y$ 皆為非空字串且 $x + y$ 的長度小於 $k$，所以根據假設（在 $2 \le L &lt; k$ 時皆成立）我們知道 $x, y$ 兩字串有公因字串 $z$。</p>
+<p>因為 $z$ 是 $x, y$ 的因字串，所以 $z$ 是 $S_1 = x+y$ 的因字串也是 $S_2 = y$ 的因字串，最終得到 $z$ 是 $S_1, S_2$ 的公因字串，完成證明：</p>
+<blockquote>
+<p>$S_1 + S_2 = S_2 + S_1$ $\implies$ $S_1, S_2$ 有公因字串 $C$</p>
+</blockquote>
+<p>再回頭看一次程式碼：</p>
+<pre data-lang="kotlin" style="background-color:#eff1f5;color:#4f5b66;" class="language-kotlin "><code class="language-kotlin" data-lang="kotlin"><span style="color:#b48ead;">if</span><span> (str1 + str2 != str2 + str1) {
+</span><span>    </span><span style="color:#b48ead;">return </span><span>&quot;&quot;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">return</span><span> str1.substring(</span><span style="color:#d08770;">0</span><span>, gcd(str1.length, str2.length))
+</span></code></pre>
+<p>如果 $S_1 + S_2 = S_2 + S_1$ 我們就可以肯定地說<strong>公因字串存在</strong>。</p>
+<h2 id="xun-zhao-zui-chang-gong-yin-zi-chuan">尋找最長公因字串</h2>
+<p>公因字串存在且 $S_1, S_2$ 長度有限，因此也存在一個最長公因字串。</p>
+<p>令 $S_1 = nC, S_2 = mC$，代表 $S_1, S_2$ 各由 $n, m$ 個任意公因字串 $C$ 串接而成。我們想一下就會發現最長公因字串就是由 $\gcd(n, m)$ 個 $C$ 串接而成，因為如果把 $C$ 想成數字 $1$，我們就會發現它根本就是<strong>最大公因數</strong>問題。</p>
+<p>所以 <code>str1.substring(0, gcd(str1.length, str2.length))</code> 就是最長公因字串。</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

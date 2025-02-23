@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Java 序列化 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Java 序列化
+    </h1>
+    <p class="post-date">
+      Published on 2023-02-24
+    </p>
+  </header>
+  <article>
+    <p>當類別實作 <code>java.io.Serializable</code> 後，物件就可以被輸出到檔案中，稱為序列化。同樣也可以被讀取，稱為反序列化。</p>
+<h2 id="xu-lie-hua">序列化</h2>
+<ol>
+<li>用 FileOutputStream 開啟檔案</li>
+<li>用 ObjectOutputStream 將物件寫入 FileOutputStream</li>
+</ol>
+<pre data-lang="Java" style="background-color:#eff1f5;color:#4f5b66;" class="language-Java "><code class="language-Java" data-lang="Java"><span style="color:#d08770;">FileOutputStream</span><span> fos = </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">FileOutputStream</span><span>(&quot;</span><span style="color:#a3be8c;">filename</span><span>&quot;);
+</span><span style="color:#d08770;">ObjectOutputStream</span><span> oos = </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">ObjectOutputStream</span><span>(fos);
+</span><span>
+</span><span>oos.</span><span style="color:#bf616a;">writeObject</span><span>(object);
+</span><span>oos.</span><span style="color:#bf616a;">flush</span><span>(); </span><span style="color:#a7adba;">// 立刻寫入檔案
+</span><span>oos.</span><span style="color:#bf616a;">close</span><span>();
+</span></code></pre>
+<h2 id="fan-xu-lie-hua">反序列化</h2>
+<p>反序列化和序列化過程類似：</p>
+<ol>
+<li>用 FileInputStream 開啟檔案</li>
+<li>用 ObjectInputStream 從 FileInputStream 讀取物件</li>
+</ol>
+<pre data-lang="Java" style="background-color:#eff1f5;color:#4f5b66;" class="language-Java "><code class="language-Java" data-lang="Java"><span style="color:#d08770;">FileInputStream</span><span> fis = </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">FileInputStream</span><span>(&quot;</span><span style="color:#a3be8c;">filename</span><span>&quot;);
+</span><span style="color:#d08770;">ObjectInputStream</span><span> ois = </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">ObjectInputStream</span><span>(fis);
+</span><span>
+</span><span style="color:#d08770;">Object</span><span> object = ois.</span><span style="color:#bf616a;">readObject</span><span>(object);
+</span><span>ois.</span><span style="color:#bf616a;">close</span><span>();
+</span></code></pre>
+<h2 id="zi-ding-xu-lie-hua">自訂序列化</h2>
+<p>關於序列化有些小細節：</p>
+<ol>
+<li>物件裡的 Field 若沒有實作 Serializable 會導致物件無法序列化</li>
+<li>序列化時，有 static 或 transient 修飾詞的 Field 不會被寫入檔案</li>
+</ol>
+<p>若想要將這些 Field 序列化，可以透過實作 Serializable 的方法來自訂序列化：</p>
+<pre data-lang="Java" style="background-color:#eff1f5;color:#4f5b66;" class="language-Java "><code class="language-Java" data-lang="Java"><span style="color:#b48ead;">public class </span><span style="color:#d08770;">Student </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">Serializable </span><span style="color:#343d46;">{
+</span><span style="color:#343d46;">	</span><span style="color:#b48ead;">private static final long </span><span style="color:#343d46;">serialVersionUID </span><span>= </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">L</span><span style="color:#343d46;">;
+</span><span style="color:#343d46;">
+</span><span style="color:#343d46;">	</span><span style="color:#b48ead;">private void </span><span style="color:#8fa1b3;">writeObject</span><span style="color:#343d46;">(</span><span style="color:#d08770;">ObjectOutputStream </span><span style="color:#bf616a;">oos</span><span style="color:#343d46;">) 
+</span><span style="color:#343d46;">		</span><span style="color:#b48ead;">throws </span><span style="color:#d08770;">IOException </span><span style="color:#343d46;">{
+</span><span style="color:#343d46;">		oos.</span><span style="color:#bf616a;">defaultWriteObject</span><span style="color:#343d46;">();
+</span><span style="color:#343d46;">		oos.</span><span style="color:#bf616a;">writeObject</span><span style="color:#343d46;">(grade.</span><span style="color:#bf616a;">getChinese</span><span style="color:#343d46;">());
+</span><span style="color:#343d46;">	}
+</span><span style="color:#343d46;">	
+</span><span style="color:#343d46;">	</span><span style="color:#b48ead;">private void </span><span style="color:#8fa1b3;">readObject</span><span style="color:#343d46;">(</span><span style="color:#d08770;">ObjectInputStream </span><span style="color:#bf616a;">ois</span><span style="color:#343d46;">) 
+</span><span style="color:#343d46;">		</span><span style="color:#b48ead;">throws </span><span style="color:#d08770;">IOException</span><span style="color:#343d46;">, </span><span style="color:#d08770;">ClassNotFoundException </span><span style="color:#343d46;">{
+</span><span style="color:#343d46;">		ois.</span><span style="color:#bf616a;">defaultReadObject</span><span style="color:#343d46;">();
+</span><span style="color:#343d46;">		grade </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#d08770;">Grade</span><span style="color:#343d46;">((</span><span style="color:#b48ead;">int</span><span style="color:#343d46;">) ois.</span><span style="color:#bf616a;">readObject</span><span style="color:#343d46;">());
+</span><span style="color:#343d46;">	}
+</span><span style="color:#343d46;">}
+</span></code></pre>
+<p>defaultWriteObject 和 defaultReadObject 是預設的序列化，後面就是自訂序列化了，把想要做的通通都寫在裡面就可以了。</p>
+<h2 id="serialversionuid">SerialVersionUID</h2>
+<p>在上面的例子中，我為 Student 這個類別加入了 SerialVersionUID ，這個 UID 是用來驗證輸出和讀取的物件是指定的類別，若不是則會拋出 InvalidClassException 。</p>
+<p>一般而言，IDE 會自動生成 UID ，若沒有指定 UID 則會由 JVM 指定。但是推薦手動指定，因為 UID 可能會因為編譯器而不同，導致產生 InvalidClassException 。</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

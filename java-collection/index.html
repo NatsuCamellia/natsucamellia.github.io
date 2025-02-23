@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Java Collection | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Java Collection
+    </h1>
+    <p class="post-date">
+      Published on 2023-02-22
+    </p>
+  </header>
+  <article>
+    <p>只會用 Array 嗎？在程式設計中有個專業知識稱為「資料結構」，資料結構可以幫助我們有效率地存取資料。Java Collections 框架就是為此而生，提供了各種實用的功能！</p>
+<p>Java Collections 有兩個主要的介面，分別為 Collection 與 Map ，前者將大量型態相同的元素裝在一起，後者則是儲存多對 Entry（Key-Value），用 Key 來存取 Value，本篇著重介紹 Collection 。</p>
+<h2 id="collection-jie-mian">Collection 介面</h2>
+<p>Colletion 是 Java 中實作<strong>集合</strong>的介面，宣告了集合所具備的基本方法：</p>
+<ul>
+<li><code>add(T element)</code></li>
+<li><code>remove(T element)</code></li>
+<li><code>size()</code></li>
+<li><code>isEmpty()</code></li>
+<li><code>contains(T element)</code></li>
+<li>...</li>
+</ul>
+<p>所有子介面都擁有這些方法，以下介紹三個子介面：</p>
+<hr />
+<h2 id="1-list"><strong>1. List</strong></h2>
+<p>List 以<strong>索引</strong>來排序元素，可以如陣列存取元素，在 Collection 之外新增了一些有關索引的方法：</p>
+<ul>
+<li><code>get(int index)</code></li>
+<li><code>set(int index, T element)</code></li>
+<li><code>indexOf(T element)</code></li>
+</ul>
+<p>實作的類別有：</p>
+<h3 id="linkedlist">LinkedList</h3>
+<p>LinkedList 會在每個元素中紀錄下一個元素的位址。存取時需要從頭遍歷，因此存取中間元素的速度<strong>相對</strong>慢。但增減時只要更改下一個元素的位址即可，所以增減中間元素的速度<strong>相對</strong>快。</p>
+<h3 id="arraylist">ArrayList</h3>
+<p>ArrayList 和 Array 最大的不同是：ArrayList 可以<strong>動態調整</strong>大小，可以增加或減少元素數量。</p>
+<hr />
+<h2 id="2-set"><strong>2. Set</strong></h2>
+<p>Set 的特色是不允許有重複的元素，元素之間沒有順序，可用的方法大多已定義在 Collection 中，這裡不多解釋。</p>
+<p>實作的類別有：</p>
+<h3 id="hashset">HashSet</h3>
+<p>HashSet 透過 HashMap 實現，擁有快速的存取速度。</p>
+<h3 id="linkedhashset">LinkedHashSet</h3>
+<p>基於 HastSet 之上，LinkedHashSet 還會維持元素新增時的順序。</p>
+<h3 id="treeset">TreeSet</h3>
+<p>TreeSet 會依物件的比較結果來排序元素，但每個元素都必須實作 Comparable 介面才能進行排序。</p>
+<hr />
+<h2 id="3-queue"><strong>3. Queue</strong></h2>
+<p>Queue 是一種特殊的線性資料結構，如字面上的意思，就和排隊一樣，具有 First in, First out (FIFO) 的特性，它只能對頭進行刪除、對尾進行插入。</p>
+<h3 id="queue-jie-mian-fang-fa-jian-yi">Queue 介面方法（建議）</h3>
+<p>對頭操作，當 Queue 為空時會回傳 <code>null</code> ：</p>
+<ul>
+<li><code>poll()</code>：刪除第一個元素並回傳。</li>
+<li><code>peek()</code>：查看第一個元素並回傳。</li>
+</ul>
+<p>對尾操作，當 Queue 滿時回傳 <code>false</code> ：</p>
+<ul>
+<li><code>offer()</code>：插入一個元素到尾端。</li>
+</ul>
+<h3 id="collection-nei-jian-fang-fa-bu-jian-yi">Collection 內建方法（不建議）</h3>
+<p>對頭操作，當 Queue 為空時會拋出 Exception ：</p>
+<ul>
+<li><code>remove()</code>：相當於 <code>poll()</code>。</li>
+<li><code>element()</code>：相當於 <code>peek()</code>。</li>
+</ul>
+<p>對尾操作，當 Queue 滿時拋出 unchecked Exception ：</p>
+<ul>
+<li><code>add()</code>：相當於 <code>offer()</code>。</li>
+</ul>
+<p>實作 Queue 的子類別有：</p>
+<h3 id="linkedlist-1">LinkedList</h3>
+<p>沒錯，就是上面的 LinkedList ，它也有實作 Queue ，可以當 Queue 用！</p>
+<h3 id="priorityqueue-interface">PriorityQueue (Interface)</h3>
+<p>PriorityQueue 可以想像成 Heap，每個元素都有自己的優先度，取出元素時會是優先度最高的元素，因此不具備 FIFO 的特質。此外，為了讓 Queue 比較元素間的優先度，元素必須實作 Comparable 介面，或是在宣告 Queue 的時候加入 Comparator 。</p>
+<h3 id="blockingqueue-interface">BlockingQueue (Interface)</h3>
+<p>BlockingQueue 除了實作 Queue 的基本功能，還有<strong>阻塞</strong>功能，意思就是說：當我們要從 Queue 中拿一個元素，但是卻<strong>沒有元素</strong>可以拿時，這個執行緒就會<strong>停下來</strong>，直到有元素可以拿為止。有四個方法有阻塞的功能：</p>
+<ol>
+<li><code>take()</code> ：拿元素，沒元素拿就<strong>等到有為止</strong>。</li>
+<li><code>put()</code> ：插入元素，沒空間放就<strong>等到有為止</strong>。</li>
+<li><code>poll(timeout, unit)</code> ：拿元素，沒元素拿就等<strong>指定時長</strong>直到有元素。</li>
+<li><code>offer(timeout, unit)</code> ：插入元素，沒空間放就等<strong>指定時長</strong>直到有空間。</li>
+</ol>
+<p>BlockingQueue 可以運用在生產與消費中：</p>
+<ul>
+<li><code>take()</code> ：消費者購買商品，當商品數量不足時就一直等到生產者做出來為止。</li>
+<li><code>put()</code> ：生產者製造商品，當商品數量達到上限時就一直等到消費者買為止。</li>
+</ul>
+<h3 id="priorityblockingqueue">PriorityBlockingQueue</h3>
+<p>繼承了上面兩個介面，PriorityQueue 和 BlockingQueue 。</p>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

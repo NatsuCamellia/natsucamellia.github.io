@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    Stack 堆疊 | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      Stack 堆疊
+    </h1>
+    <p class="post-date">
+      Published on 2022-10-20
+    </p>
+  </header>
+  <article>
+    <p>Stack 是一種基礎的資料結構，可以拿堆盤子來幫助想像，它的特性是：</p>
+<ol>
+<li>只能在堆疊的最上方新增或刪除元素</li>
+<li>後進先出（Last in first out, LIFO）</li>
+<li>最上方稱為 Top ，底部稱為 Bottom</li>
+</ol>
+<p>操作有：</p>
+<ol>
+<li>Push，新增元素</li>
+<li>Pop，拿出元素</li>
+<li>Peak，查看最上方的元素</li>
+</ol>
+<p>此外，Java 標準函式庫也有 Stack。</p>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span>import java.util.Stack;
+</span></code></pre>
+<p>宣告方法為：</p>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#bf616a;">Stack</span><span>&lt;</span><span style="color:#bf616a;">T</span><span>&gt; stack = </span><span style="color:#8fa1b3;">new </span><span style="color:#bf616a;">Stack</span><span>&lt;</span><span style="color:#bf616a;">T</span><span>&gt;();
+</span></code></pre>
+<hr />
+<h2 id="1-class">1. Class</h2>
+<p>首先，先建立 Stack Class。</p>
+<p>我們需要一個陣列來放元素，同時也需要一個數字告訴我們容量才能建立陣列。此外我們還需要一個 Flag 來紀錄最上方元素的 Index。</p>
+<p>先新增 Stack 的屬性：</p>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public </span><span style="color:#b48ead;">class </span><span style="color:#d08770;">Stack </span><span>{
+</span><span>    </span><span style="color:#8fa1b3;">private</span><span> int capacity;
+</span><span>    </span><span style="color:#8fa1b3;">private</span><span> int data[];
+</span><span>    </span><span style="color:#8fa1b3;">private</span><span> int top = -</span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span></code></pre>
+<p>加入 Constructor：</p>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public </span><span style="color:#bf616a;">Stack</span><span>(int capacity) {
+</span><span>    this.capacity = capacity;
+</span><span>    data = </span><span style="color:#8fa1b3;">new</span><span> int[capacity];
+</span><span>}
+</span></code></pre>
+<p>我們可以開始實作功能了。</p>
+<hr />
+<h2 id="2-functions">2. Functions</h2>
+<p>首先，我們先實作 Push 來加入元素：</p>
+<ol>
+<li>把 top 往上移，指到一個空位</li>
+<li>把元素填進去這個空位</li>
+</ol>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public</span><span> void push(int element) {
+</span><span>    data[++top] = element;
+</span><span>}
+</span></code></pre>
+<p>接著實作 Pop：</p>
+<ol>
+<li>回傳最上方的元素</li>
+<li>把 top 往下移，讓下面那個元素成為 top</li>
+</ol>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public</span><span> int pop() {
+</span><span>    </span><span style="color:#b48ead;">return</span><span> data[top--];
+</span><span>}
+</span></code></pre>
+<p>實作 Peak：</p>
+<ol>
+<li>回傳最上方的元素</li>
+</ol>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public</span><span> int peak() {
+</span><span>    </span><span style="color:#b48ead;">return</span><span> data[top];
+</span><span>}
+</span></code></pre>
+<hr />
+<h2 id="3-state">3. State</h2>
+<p>由於我們可能在多次 Push Pop 之後可能會忘記 Stack 裝了多少元素，還有多少空間，可能會導致 Stack 滿了仍繼續 Push 產生 Overflow，或是 Stak 空了仍繼續 Pop 產生 Underflow，所以我們引入幾個 State Getter 來取得 Stack 的容量情況。</p>
+<ol>
+<li>isFull</li>
+<li>isEmpty</li>
+<li>size</li>
+</ol>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public </span><span style="color:#bf616a;">Boolean</span><span> isFull() {
+</span><span>    </span><span style="color:#b48ead;">return</span><span> this.top == this.capacity - </span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">public </span><span style="color:#bf616a;">Boolean</span><span> isEmpty() {
+</span><span>    </span><span style="color:#b48ead;">return</span><span> this.top == -</span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">public</span><span> int size() {
+</span><span>    </span><span style="color:#b48ead;">return</span><span> top + </span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span></code></pre>
+<hr />
+<h2 id="code">Code</h2>
+<pre data-lang="ruby" style="background-color:#eff1f5;color:#4f5b66;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#8fa1b3;">public </span><span style="color:#b48ead;">class </span><span style="color:#d08770;">Stack </span><span>{
+</span><span>    </span><span style="color:#8fa1b3;">private</span><span> int capacity;
+</span><span>    </span><span style="color:#8fa1b3;">private</span><span> int data[];
+</span><span>    int top = -</span><span style="color:#d08770;">1</span><span>;
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// </span><span style="color:#bf616a;">Constructor
+</span><span>    </span><span style="color:#8fa1b3;">public </span><span style="color:#bf616a;">Stack</span><span>(int capacity) {
+</span><span>        this.capacity = capacity;
+</span><span>        data = </span><span style="color:#8fa1b3;">new</span><span> int[capacity];
+</span><span>    }
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// </span><span style="color:#bf616a;">Push
+</span><span>    </span><span style="color:#8fa1b3;">public</span><span> void push(int element) {
+</span><span>        data[++top] = element;
+</span><span>    }
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// </span><span style="color:#bf616a;">Pop
+</span><span>    </span><span style="color:#8fa1b3;">public</span><span> int pop() {
+</span><span>        </span><span style="color:#b48ead;">return</span><span> data[top--];
+</span><span>    }
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// </span><span style="color:#bf616a;">Peak
+</span><span>    </span><span style="color:#8fa1b3;">public</span><span> int peak() {
+</span><span>        </span><span style="color:#b48ead;">return</span><span> data[top];
+</span><span>    }
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// isFull
+</span><span>    </span><span style="color:#8fa1b3;">public </span><span style="color:#bf616a;">Boolean</span><span> isFull() {
+</span><span>        </span><span style="color:#b48ead;">return</span><span> this.top == this.capacity - </span><span style="color:#d08770;">1</span><span>;
+</span><span>    }
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// isEmpty
+</span><span>    </span><span style="color:#8fa1b3;">public </span><span style="color:#bf616a;">Boolean</span><span> isEmpty() {
+</span><span>        </span><span style="color:#b48ead;">return</span><span> this.top == -</span><span style="color:#d08770;">1</span><span>;
+</span><span>    }
+</span><span>
+</span><span style="color:#96b5b4;">    </span><span>// size
+</span><span>    </span><span style="color:#8fa1b3;">public</span><span> int size() {
+</span><span>        </span><span style="color:#b48ead;">return</span><span> top + </span><span style="color:#d08770;">1</span><span>;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-tw">
+    <title>NatsuCamellia - Algorithm</title>
+    <subtitle>When camellia blooms in summer.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://natsucamellia.github.io/categories/algorithm/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-08-18T00:00:00+00:00</updated>
+    <id>https://natsucamellia.github.io/categories/algorithm/atom.xml</id>
+    <entry xml:lang="zh-tw">
+        <title>最長公因字串</title>
+        <published>2024-08-18T00:00:00+00:00</published>
+        <updated>2024-08-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/greatest-common-divisor-of-string/"/>
+        <id>https://natsucamellia.github.io/greatest-common-divisor-of-string/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/greatest-common-divisor-of-string/">&lt;p&gt;最近在 LeetCode 上面看到一題簡單卻有意思的題目 &lt;a href=&quot;https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;greatest-common-divisor-of-strings&#x2F;?envType=study-plan-v2&amp;amp;envId=leetcode-75&quot;&gt;Greatest Common Divisor of Strings - LeetCode&lt;&#x2F;a&gt;，除了遍歷所有字首和使用輾轉相除法的解法外，我還看到了一個需要一些思考與沒那麼 trivial 的解法：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;kotlin&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-kotlin &quot;&gt;&lt;code class=&quot;language-kotlin&quot; data-lang=&quot;kotlin&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Solution&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;gcdOfStrings&lt;&#x2F;span&gt;&lt;span&gt;(str1: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span&gt;, str2: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span&gt;): &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; (str1 + str2 != str2 + str1) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;        
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; str1.substring(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, gcd(str1.length, str2.length))
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;gcd&lt;&#x2F;span&gt;&lt;span&gt;(a: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;, b: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;) : &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; (b == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; a
+&lt;&#x2F;span&gt;&lt;span&gt;        } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; gcd(b, a % b)
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下推導皆基於 $S_1, S_2$ 為&lt;strong&gt;有限非空字串&lt;&#x2F;strong&gt;的假設。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;pan-duan-gong-yin-zi-chuan-shi-fou-cun-zai&quot;&gt;判斷公因字串是否存在&lt;&#x2F;h2&gt;
+&lt;p&gt;首先我們可以觀察，如果公因字串 $C$ 存在的話，兩個字串都將是由多個 $C$ 串接起來的字串（CCC...），因此 $S_1 + S_2 = S_2 + S_1$；反過來說如果 $S_1 + S_2 \ne S_2 + S_1$ 就代表它們沒有公因字串，所以我們可以直接回傳空字串。&lt;&#x2F;p&gt;
+&lt;p&gt;那 $S_1 + S_2 = S_2 + S_1$ 就&lt;strong&gt;一定有&lt;&#x2F;strong&gt;公因字串嗎？如果是這個樣子的話，那我們需要證明以下命題：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$S_1 + S_2 = S_2 + S_1$ $\iff$ $S_1, S_2$ 有公因字串 $C$&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;$\impliedby$ 方向已經在上面證明過了，現在證明 $\implies$ 方向。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;s-1-s-2-s-2-s-1-implies-s-1-s-2-you-gong-yin-zi-chuan-c&quot;&gt;$S_1 + S_2 = S_2 + S_1$ $\implies$ $S_1, S_2$ 有公因字串 $C$&lt;&#x2F;h3&gt;
+&lt;p&gt;我們使用數學歸納法，以 $S_1 + S_2$ 的字串長度 $L$ 為變數。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;起始步驟&lt;&#x2F;strong&gt;：當 $L = 2$，則 $S_1$ 與 $S_2$ 的長度皆為 $1$，很明顯 $S_1 = S_2 = C$。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;推遞步驟&lt;&#x2F;strong&gt;：假設在 $2 \le L &amp;lt; k$ 時皆成立，當 $L = k$ 時，若 $S_1$ 與 $S_2$ 長度相同，可得 $S_1 = S_2 = C$；反之不失一般性假設 $S_1$ 比較長，我們用 &lt;code&gt;()&lt;&#x2F;code&gt; 代表 $S_1$、&lt;code&gt;[]&lt;&#x2F;code&gt; 代表 $S_2$，則 $S_1 + S_2 = S_2 + S_1$ 可以這樣表示：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;$S_1 + S_2$：&lt;code&gt;(________)[___]&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;$S_2 + S_1$：&lt;code&gt;[___](________)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;我們把兩個 $S_1$ 重疊的地方用 $x$ 表示，$S_2$ 用 $y$ 表示：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;$S_1 + S_2$：&lt;code&gt;( y || x )[ y ]&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;$S_2 + S_1$：&lt;code&gt;[ y ]( x || y )&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;我們得到 $S_1 = y + x$ （上式）且 $S_1 = x + y$ （下式），也就是 $y + x = x + y$，又 $x, y$ 皆為非空字串且 $x + y$ 的長度小於 $k$，所以根據假設（在 $2 \le L &amp;lt; k$ 時皆成立）我們知道 $x, y$ 兩字串有公因字串 $z$。&lt;&#x2F;p&gt;
+&lt;p&gt;因為 $z$ 是 $x, y$ 的因字串，所以 $z$ 是 $S_1 = x+y$ 的因字串也是 $S_2 = y$ 的因字串，最終得到 $z$ 是 $S_1, S_2$ 的公因字串，完成證明：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$S_1 + S_2 = S_2 + S_1$ $\implies$ $S_1, S_2$ 有公因字串 $C$&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;再回頭看一次程式碼：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;kotlin&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-kotlin &quot;&gt;&lt;code class=&quot;language-kotlin&quot; data-lang=&quot;kotlin&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; (str1 + str2 != str2 + str1) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; str1.substring(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, gcd(str1.length, str2.length))
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果 $S_1 + S_2 = S_2 + S_1$ 我們就可以肯定地說&lt;strong&gt;公因字串存在&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xun-zhao-zui-chang-gong-yin-zi-chuan&quot;&gt;尋找最長公因字串&lt;&#x2F;h2&gt;
+&lt;p&gt;公因字串存在且 $S_1, S_2$ 長度有限，因此也存在一個最長公因字串。&lt;&#x2F;p&gt;
+&lt;p&gt;令 $S_1 = nC, S_2 = mC$，代表 $S_1, S_2$ 各由 $n, m$ 個任意公因字串 $C$ 串接而成。我們想一下就會發現最長公因字串就是由 $\gcd(n, m)$ 個 $C$ 串接而成，因為如果把 $C$ 想成數字 $1$，我們就會發現它根本就是&lt;strong&gt;最大公因數&lt;&#x2F;strong&gt;問題。&lt;&#x2F;p&gt;
+&lt;p&gt;所以 &lt;code&gt;str1.substring(0, gcd(str1.length, str2.length))&lt;&#x2F;code&gt; 就是最長公因字串。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>XOR 消除法</title>
+        <published>2022-10-23T00:00:00+00:00</published>
+        <updated>2022-10-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/xor-trick/"/>
+        <id>https://natsucamellia.github.io/xor-trick/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/xor-trick/">&lt;p&gt;在解題的時候，有人使用最標準的思路來解題，我們稱之為 Best Practice；但也有人用較為特殊的技巧或想法來快速解題，雖然這可能不是題目最先設計的用意，但是它卻能有效率的解決問題，當中也有一些值得學習的小技巧。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;給予一個包含 n-1 個數字的陣列，範圍為 [1, n] ，所有數字都恰好出現一次，除了一個遺失的數字，請找出這個數字。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;當然，我們有很多直觀的解法來解決這個問題，但是讓我們來看看 XOR 能如何巧妙地解決這道題目吧。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xor&quot;&gt;XOR&lt;&#x2F;h2&gt;
+&lt;p&gt;XOR 是一個用於位元的邏輯運算子，一般而言用 &lt;code&gt;^&lt;&#x2F;code&gt; 表示，如果兩個位元不同就回傳 &lt;code&gt;1&lt;&#x2F;code&gt; ，反之則回傳 &lt;code&gt;0&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;x&lt;&#x2F;th&gt;&lt;th&gt;y&lt;&#x2F;th&gt;&lt;th&gt;x ^ y&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;許多的程式語言會將&lt;code&gt;^&lt;&#x2F;code&gt;實作成位元運算子，讓 XOR 能對每個位元進行運算，例如：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0011 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1010 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1001
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;因為：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;因為有了這個特性，我們不只可以將 XOR 應用在布林值，我們甚至可以用在任何物件上。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;guan-yu-xor-de-te-xing&quot;&gt;關於 XOR 的特性&lt;&#x2F;h2&gt;
+&lt;p&gt;我們可以從先前的定義演繹出一些關於 XOR 的特性，我們先逐一了解這些特性，並接著使用它們來解決問題。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dui-0-zuo-xor-x-0-x&quot;&gt;對 0 做 XOR： &lt;code&gt;x ^ 0 = x&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;x&lt;&#x2F;th&gt;&lt;th&gt;y&lt;&#x2F;th&gt;&lt;th&gt;x ^ y&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;dui-zi-ji-zuo-xor-x-x-0&quot;&gt;對自己做 XOR： &lt;code&gt;x ^ x = 0&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;這個很直觀，根據定義，兩個一樣的位元做 XOR 會回傳 &lt;code&gt;0&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;x&lt;&#x2F;th&gt;&lt;th&gt;y&lt;&#x2F;th&gt;&lt;th&gt;x ^ y&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;jiao-huan-lu-x-y-y-x&quot;&gt;交換律： &lt;code&gt;x ^ y = y ^ x&lt;&#x2F;code&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;XOR 滿足交換律，也就是說我們可以任意交換 XOR 的順序，因為我們是要比較兩個位元是否相異，順序不重要。要證明交換律成立很簡單，我們只要檢查 &lt;code&gt;x ^ y&lt;&#x2F;code&gt; 和 &lt;code&gt;y ^ x&lt;&#x2F;code&gt; 的 Truth table 就可以了。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;x&lt;&#x2F;th&gt;&lt;th&gt;y&lt;&#x2F;th&gt;&lt;th&gt;x ^ y&lt;&#x2F;th&gt;&lt;th&gt;y ^ x&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;xor-yun-suan-de-xian-xiang&quot;&gt;XOR 運算的現象&lt;&#x2F;h2&gt;
+&lt;p&gt;結合以上幾個特性，我們可以得到一個非常有用的技巧：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;XOR 消除法：如果我們有一連串的 XOR 運算 &lt;code&gt;a ^ b ^ c ^ …&lt;&#x2F;code&gt; ，我們可以消除每一對重複的數字，而不影響運算結果。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;消除法的中心思想是：我們先運用交換律交換運算順序，再利用 &lt;code&gt;x ^ x = 0&lt;&#x2F;code&gt; 的性質來消除每一對重複的數字。&lt;&#x2F;p&gt;
+&lt;p&gt;讓我們來看看一個例子：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;  a ^ c ^ d ^ b ^ d ^ c ^ a
+&lt;&#x2F;span&gt;&lt;span&gt;= a ^ a ^ c ^ c ^ d ^ d ^ b  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; 交換律
+&lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;^ b              &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; x ^ x = 0
+&lt;&#x2F;span&gt;&lt;span&gt;= b                          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; x ^ 0 = x
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;並且因為 &lt;code&gt;^&lt;&#x2F;code&gt; 是位元運算子，這個技巧不管 &lt;code&gt;a&lt;&#x2F;code&gt; , &lt;code&gt;b&lt;&#x2F;code&gt; , &lt;code&gt;c&lt;&#x2F;code&gt; , &lt;code&gt;d&lt;&#x2F;code&gt; 是什麼資料型態都可以使用。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ying-yong-yi-jiao-huan-liang-ge-shu-zi&quot;&gt;應用一：交換兩個數字&lt;&#x2F;h2&gt;
+&lt;p&gt;在解決找出遺失數字的問題前，我們先來看看這個問題&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;交換兩個數字，而不使用額外的變數。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;這看起來有點棘手，但是我們可以透過 XOR 輕鬆完成：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;x ^= y
+&lt;&#x2F;span&gt;&lt;span&gt;y ^= x
+&lt;&#x2F;span&gt;&lt;span&gt;x ^= y
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;看起來有點神奇對吧，但是它是真的可以辦到交換兩數的，我們透過拆解每個步驟，註解中表示每一行執行完之後 &lt;code&gt;(x, y)&lt;&#x2F;code&gt; 的值，來看看它到底是如何完成的：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;x ^= y &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; (x ^ y, y)
+&lt;&#x2F;span&gt;&lt;span&gt;y ^= x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; (x ^ y, y ^ x ^ y) =&amp;gt; (x ^ y, x)
+&lt;&#x2F;span&gt;&lt;span&gt;x ^= y &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; (x ^ y ^ x, x) =&amp;gt; (y, x)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們可以發現，這其實只是使用我們先前導出的一些特性而已。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ying-yong-er-zhao-chu-yi-shi-de-shu-zi&quot;&gt;應用二：找出遺失的數字&lt;&#x2F;h2&gt;
+&lt;p&gt;我們終於要來解決一開始的題目了，我們重新來看看題目：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;給予一個包含 n-1 個數字的陣列，範圍為 [1, n] ，所有數字都恰好出現一次，除了一個遺失的數字，請找出這個數字。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;當然，我們有很多解法來解決這個問題，但是讓我們用學到的新玩具 XOR 來解決這道題目。&lt;&#x2F;p&gt;
+&lt;p&gt;我們知道 XOR 可以消除重複出現的元素，但是如果我們只是對每個元素 XOR ，我們就沒辦法運用消除的這個特性，因為每個元素只出現最多一次。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;a[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;] ^ a[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;] ^ ... ^ a[n-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;請注意因為我們只有 &lt;code&gt;n-1&lt;&#x2F;code&gt; 個元素，所以最後一個索引值是 &lt;code&gt;n-2&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;那該怎麼辦呢，如同前總統馬英九所說的：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一個便當吃不夠，你可以吃兩個。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;所以呢？&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一個元素 XOR 不夠，你可以 XOR 兩個。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;讓我們也把 1 到 n XOR 進去：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;^ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2 &lt;&#x2F;span&gt;&lt;span&gt;^ ... ^ n ^ a[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;] ^ a[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;] ^ ... ^ a[n-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們會得到一個這樣的 XOR 序列：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;給定的數字都會出現兩次：
+&lt;ul&gt;
+&lt;li&gt;其中一次在我們 XOR 進去的 1 到 n 之中。&lt;&#x2F;li&gt;
+&lt;li&gt;另一次在給定的陣列中。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;遺失的數字只會出現一次：
+&lt;ul&gt;
+&lt;li&gt;我們 XOR 進去的 1 到 n 之中。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;如果我們把這些全部 XOR 起來，給定的數字會因為出現兩次而被消除，得益於 XOR 消除法；而遺失的數字只出現一次，不會被消除。也就是說結果會剩下遺失的數字，也就是題目所求的答案。&lt;&#x2F;p&gt;
+&lt;p&gt;用程式碼表現，大概會像這個樣子：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;findMissing&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int[]&lt;&#x2F;span&gt;&lt;span&gt; array, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; n) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; missing = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;; i &amp;lt;= n; i++) {
+&lt;&#x2F;span&gt;&lt;span&gt;        missing ^= i;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i : array) {
+&lt;&#x2F;span&gt;&lt;span&gt;        missing ^= i;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; missing;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;觀察這段程式碼，可能讓人不懂背後的演算法原理，但是我們知道了 XOR 消除法後，我們會發現其實是非常簡單的概念。但是我不推薦把這段程式碼拿給別人看，因為他會需要了解這個技巧才能知道這段程式碼的想法。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tui-guang-zhi-suo-you-zi-liao-xing-tai&quot;&gt;推廣至所有資料型態&lt;&#x2F;h3&gt;
+&lt;p&gt;我們也可以運用這個演算法在各種資料型態上，尋找缺失的元素，只要符合以下條件：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;給定出現過的元素&lt;&#x2F;li&gt;
+&lt;li&gt;給定所有元素&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;我們就能套用在任何一種資料型態上，例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;我們有所有 &lt;code&gt;Person&lt;&#x2F;code&gt; 的集合，就可以找出缺失的 &lt;code&gt;Person&lt;&#x2F;code&gt; 。&lt;&#x2F;li&gt;
+&lt;li&gt;我們有所有節點的集合，就可以找出缺失的節點。&lt;&#x2F;li&gt;
+&lt;li&gt;就算不是連續整數，只要我們有所有整數的集合，和出現過的整數，我們就能找到缺失的整數。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;lian-xi-zhao-chu-zhong-fu-de-shu-zi&quot;&gt;練習：找出重複的數字&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;給予一個包含 n+1 個數字的陣列，範圍為 [1, n] ，所有數字都恰好出現一次，除了一個重複的數字出現了兩次，請找出這個數字。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</content>
+        
+    </entry>
+</feed>

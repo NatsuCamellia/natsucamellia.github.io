@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <title>
+            
+    在 Arm64 Mac 上編譯 Aseprite | NatsuCamellia
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://natsucamellia.github.io/main.css">
+        <!-- MathJax -->
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        </style>
+      </head>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        
+<header>
+    <aside class="home-link">
+      <a href="https:&#x2F;&#x2F;natsucamellia.github.io&#x2F;">← Home</a>
+    </aside>
+    <h1>
+      在 Arm64 Mac 上編譯 Aseprite
+    </h1>
+    <p class="post-date">
+      Published on 2024-01-24
+    </p>
+  </header>
+  <article>
+    <p><a href="https://www.aseprite.org">Aseprite</a> 是一款專門為像素畫設計的繪圖軟體，功能簡單強大，在像素畫領域中非常有名，深受許多創作者喜愛。這款軟體在 Aseprite 官方網站以 19.99 美金販售，也可在 Steam 上以較便宜價格約 300 元新台幣購買。</p>
+<p>然而，Aseprite 是一款開源軟體，Aseprite 在 <a href="https://www.aseprite.org/faq/#if-aseprite-source-code-is-available-how-is-that-you-are-selling-it">FAQ</a> 中提到：</p>
+<blockquote>
+<p>Aseprite started being open source since its very beginning in 2001, and we were happy with that until <a href="http://dev.aseprite.org/post/149797781837/new-source-code-license">August 2016</a>. <strong>Now you can still download its source code, compile it, and use it for your personal purposes.</strong> You can <a href="https://www.aseprite.org/faq/#can-i-sell-graphics-created-with-aseprite">make commercial art/assets with it too</a>. The only restriction in <a href="https://github.com/aseprite/aseprite/blob/master/EULA.txt">Aseprite EULA</a> is that <a href="https://www.aseprite.org/faq/#can-i-redistribute-aseprite">you cannot redistribute Aseprite</a> to third parties.</p>
+</blockquote>
+<p>內容大意是使用者可以自行使用原始碼編譯程式，且使用 Aseprite 創作的畫作可以用作商業用途，唯一限制是不能分享編譯後的軟體。在 <a href="https://github.com/aseprite/aseprite">Aseprite GitHub</a> 中有清楚詳細的編譯教學，雖然對於一般人而言還是需要不少努力才能完成編譯，不過對於資訊背景的人可說是保母級教學了。</p>
+<h2 id="bian-yi-bu-zou">編譯步驟</h2>
+<blockquote>
+<p>以下資訊皆為撰文日期（2024 年 1 月 24 日）所得</p>
+</blockquote>
+<ol>
+<li>安裝編譯時需要的共通套件</li>
+<li>安裝 Mac 所需的套件</li>
+<li>編譯</li>
+<li>做成可以放在啟動台的應用程式方便使用</li>
+</ol>
+<h2 id="an-zhuang-gong-tong-tao-jian">安裝共通套件</h2>
+<p>需要的共通套件有：</p>
+<ol>
+<li>CMake <code>3.16+</code></li>
+<li>Ninja</li>
+<li>Skia <code>aseprite-m102</code></li>
+</ol>
+<h3 id="cmake">CMake</h3>
+<p><a href="https://cmake.org">CMake</a> 是用來建置 C++ 程式的工具。</p>
+<ol>
+<li><code>cmake --version</code> 檢查電腦中是否已經安裝版本 3.16 以上的 CMake。</li>
+<li><code>brew install cmake</code> 從 Homebrew 安裝 CMake。</li>
+</ol>
+<h3 id="ninja">Ninja</h3>
+<p>Ninja 是由 Google 員工 Evan Martin 開發的小型建置系統。 Ninja 注重速度，被設計為盡可能快地運行。</p>
+<ol>
+<li><code>ninja --version</code> 檢查電腦中是否已經安裝 Ninja。</li>
+<li><code>brew install ninja</code> 從 Homebrew 安裝 Ninja。</li>
+</ol>
+<h3 id="skia">Skia</h3>
+<p>Skia 是 Aseprite 的其中一個套件，依賴關係為 Aseprite &gt; Laf &gt; Skia。本次安裝所需的 Skia 版本為 <code>aseprite-m102</code>。</p>
+<ol>
+<li>從 <a href="https://github.com/aseprite/skia/releases">Releases · aseprite/skia</a> 下載已經建置好的套件（<code>Skia-macOS-Release-arm64.zip</code>）。</li>
+<li><code>mkdir -p $HOME/deps/skia</code> 創建資料夾。</li>
+<li><code>unzip Skia-macOS-Release-arm64.zip -d $HOME/deps/skia</code> 解壓縮。</li>
+</ol>
+<h2 id="an-zhuang-mac-suo-xu-tao-jian">安裝 Mac 所需套件</h2>
+<p>需要的 Mac 套件有：</p>
+<ol>
+<li>Xcode</li>
+<li>MacOS SDK</li>
+</ol>
+<p>從 App Store 下載 Xcode 並開啟，按照指示安裝 MacOS SDK 即可。</p>
+<h2 id="bian-yi">編譯</h2>
+<h3 id="xia-zai-yuan-shi-ma">下載原始碼</h3>
+<p>找到一個合適的資料夾後下載原始碼。</p>
+<pre data-lang="sh" style="background-color:#eff1f5;color:#4f5b66;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">git</span><span> clone</span><span style="color:#bf616a;"> --recursive</span><span> https://github.com/aseprite/aseprite.git
+</span></code></pre>
+<blockquote>
+<p><code>--recursive</code> 會一併下載在其他 repo 的 dependency。</p>
+</blockquote>
+<h3 id="chuang-jian-jian-zhi-zi-liao-jia">創建建置資料夾</h3>
+<p>創建建置資料夾的目的是：如果想要重新建置程式的話，只需要清空建置資料夾即可。</p>
+<pre data-lang="sh" style="background-color:#eff1f5;color:#4f5b66;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">cd</span><span> aseprite
+</span><span style="color:#bf616a;">mkdir</span><span> build
+</span></code></pre>
+<h3 id="kai-shi-jian-zhi">開始建置</h3>
+<p>進入建置資料夾：</p>
+<pre data-lang="sh" style="background-color:#eff1f5;color:#4f5b66;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">cd</span><span> build
+</span></code></pre>
+<p>使用 CMake 建置：</p>
+<pre data-lang="sh" style="background-color:#eff1f5;color:#4f5b66;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">cmake </span><span>\
+</span><span style="color:#bf616a;">  -DCMAKE_BUILD_TYPE</span><span>=RelWithDebInfo \
+</span><span style="color:#bf616a;">  -DCMAKE_OSX_ARCHITECTURES</span><span>=arm64 \
+</span><span style="color:#bf616a;">  -DCMAKE_OSX_DEPLOYMENT_TARGET</span><span>=11.0 \
+</span><span style="color:#bf616a;">  -DCMAKE_OSX_SYSROOT</span><span>=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
+</span><span style="color:#bf616a;">  -DLAF_BACKEND</span><span>=skia \
+</span><span style="color:#bf616a;">  -DSKIA_DIR</span><span>=$</span><span style="color:#bf616a;">HOME</span><span>/deps/skia \
+</span><span style="color:#bf616a;">  -DSKIA_LIBRARY_DIR</span><span>=$</span><span style="color:#bf616a;">HOME</span><span>/deps/skia/out/Release-arm64 \
+</span><span style="color:#bf616a;">  -DSKIA_LIBRARY</span><span>=$</span><span style="color:#bf616a;">HOME</span><span>/deps/skia/out/Release-arm64/libskia.a \
+</span><span style="color:#bf616a;">  -DPNG_ARM_NEON</span><span>:STRING=on \
+</span><span style="color:#bf616a;">  -G</span><span> Ninja \
+</span><span>  ..
+</span></code></pre>
+<p>其中有一些參數要注意：</p>
+<ol>
+<li><code>DCMAKE_OSX_SYSROOT</code>：MacOS SDK 的路徑。</li>
+<li><code>DSKIA_*</code>：Skia 的解壓縮路徑如果有變更，參數也要修改。</li>
+<li><code>..</code>：不是省略，是父目錄的意思，因為程式碼都在父目錄。</li>
+</ol>
+<p>使用 Ninja 建置：</p>
+<pre data-lang="sh" style="background-color:#eff1f5;color:#4f5b66;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">ninja</span><span> aseprite
+</span></code></pre>
+<h2 id="zuo-cheng-ying-yong-cheng-shi">做成應用程式</h2>
+<p>建置完後，打開 <code>aseprite/build/bin/aseprite</code> 就可以使用 Aseprite 了。為了讓我們編譯的 Aseprite 更有應用程式的感覺，我們可以將這些檔案打包成一個 <code>.app</code> 檔，和啟動台裡面的程式一樣美觀又方便。</p>
+<ol>
+<li>建立資料夾 <code>Aseprite.app</code>，若跳出視窗，選擇將副檔名加入結尾。</li>
+<li>把 <code>aseprite/build/bin</code> 內的所有檔案加入 <code>Aseprite.app</code>。</li>
+<li>右鍵 <code>Aseprite.app</code> 取得資訊。</li>
+<li>把 <code>aseprite/data/icons/ase.ico</code> 這個圖示拉到 <code>Aseprite.app</code> 資訊框左上角的圖示欄位，以更換圖示。</li>
+<li>最後把 <code>Aseprite.app</code> 放進應用程式資料夾，即可從啟動台中開啟。</li>
+</ol>
+
+  </article>
+
+      </div>
+    </div>
+  </body>
+</html>

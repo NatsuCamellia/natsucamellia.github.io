@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-tw">
+    <title>NatsuCamellia - Java</title>
+    <subtitle>When camellia blooms in summer.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://natsucamellia.github.io/categories/java/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-03-04T00:00:00+00:00</updated>
+    <id>https://natsucamellia.github.io/categories/java/atom.xml</id>
+    <entry xml:lang="zh-tw">
+        <title>Java Thread</title>
+        <published>2023-03-04T00:00:00+00:00</published>
+        <updated>2023-03-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/java-thread/"/>
+        <id>https://natsucamellia.github.io/java-thread/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/java-thread/">&lt;blockquote&gt;
+&lt;p&gt;當本文使用 Thread 時，指的是 Thread 這個類別，而非執行緒。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;執行緒是 Java 中重要的一環，可以讓我們的程式分成不同部分（看起來）同時運行。建立執行緒有兩種方式，第一種是直接繼承 Thread ，而另一種則是實作 Runnable 。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ji-cheng-thread&quot;&gt;繼承 Thread&lt;&#x2F;h2&gt;
+&lt;p&gt;繼承 Thread 的話只要覆寫 run() 方法就可以了，可以在 run() 中放入任何想要做的事。
+例如我想要印出一些數字，並在之間 sleep() 一秒鐘：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MyThread &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Thread &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{ 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Override  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;() {  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt; i &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;; i &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;; i&lt;&#x2F;span&gt;&lt;span&gt;++&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) {  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;.out.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;println&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(i);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sleep&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;);  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;            } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;catch &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;InterruptedException &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;e&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) {  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;throw new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RuntimeException&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(e);  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;            }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;        }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;要讓這個執行緒開始跑，並不是呼叫 run() ，而是呼叫 start() ，因為呼叫 run() 並不會建立一個新的執行緒。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Main &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public static void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;args&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) { 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MyThread&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt; thread &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MyThread&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		thread.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;shi-zuo-runnable&quot;&gt;實作 Runnable&lt;&#x2F;h2&gt;
+&lt;p&gt;Runnable 介面只有一個方法 run() ，因此實作時和繼承 Thread 時一樣：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-Java &quot;&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MyRunnable &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;implements &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Runnable &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{ 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Override  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;() {  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt; i &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;; i &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;; i&lt;&#x2F;span&gt;&lt;span&gt;++&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) {  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;.out.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;println&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(i);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;        }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;現在它還不是一個可以跑的執行緒，要先呼叫 Thread 的建構子，並把 MyRunnable 當作參數建立一個 Thread 。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-Java &quot;&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Main &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public static void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;args&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) { 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MyRunnable&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt; runnable &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MyRunnable&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Thread&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt; thread &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Thread&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(runnable);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		thread.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;    }  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;runnable-yu-thread&quot;&gt;Runnable 與 Thread&lt;&#x2F;h2&gt;
+&lt;p&gt;那麼到底該&lt;strong&gt;實作 Runnable&lt;&#x2F;strong&gt; 還是&lt;strong&gt;繼承 Thread&lt;&#x2F;strong&gt; 呢？
+Thread 實作了 Runnable ，並新增了許多方法如 wait(), sleep() 等，但是使用實作 Runnable 的方法最終還是會建立一個 Thread ，所以一樣可以用到 Thread 的方法。此外，由於 Java 不允許&lt;strong&gt;多重繼承&lt;&#x2F;strong&gt;，因此實作 Runnable 的好處是不會佔用繼承的位置。
+總而言之，能用 Runnable 就盡量用吧！&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>Java 序列化</title>
+        <published>2023-02-24T00:00:00+00:00</published>
+        <updated>2023-02-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/serialization/"/>
+        <id>https://natsucamellia.github.io/serialization/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/serialization/">&lt;p&gt;當類別實作 &lt;code&gt;java.io.Serializable&lt;&#x2F;code&gt; 後，物件就可以被輸出到檔案中，稱為序列化。同樣也可以被讀取，稱為反序列化。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xu-lie-hua&quot;&gt;序列化&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;用 FileOutputStream 開啟檔案&lt;&#x2F;li&gt;
+&lt;li&gt;用 ObjectOutputStream 將物件寫入 FileOutputStream&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;Java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-Java &quot;&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;FileOutputStream&lt;&#x2F;span&gt;&lt;span&gt; fos = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;FileOutputStream&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;filename&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ObjectOutputStream&lt;&#x2F;span&gt;&lt;span&gt; oos = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ObjectOutputStream&lt;&#x2F;span&gt;&lt;span&gt;(fos);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;oos.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;writeObject&lt;&#x2F;span&gt;&lt;span&gt;(object);
+&lt;&#x2F;span&gt;&lt;span&gt;oos.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;flush&lt;&#x2F;span&gt;&lt;span&gt;(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a7adba;&quot;&gt;&#x2F;&#x2F; 立刻寫入檔案
+&lt;&#x2F;span&gt;&lt;span&gt;oos.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;fan-xu-lie-hua&quot;&gt;反序列化&lt;&#x2F;h2&gt;
+&lt;p&gt;反序列化和序列化過程類似：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;用 FileInputStream 開啟檔案&lt;&#x2F;li&gt;
+&lt;li&gt;用 ObjectInputStream 從 FileInputStream 讀取物件&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;Java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-Java &quot;&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;FileInputStream&lt;&#x2F;span&gt;&lt;span&gt; fis = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;FileInputStream&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;filename&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ObjectInputStream&lt;&#x2F;span&gt;&lt;span&gt; ois = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ObjectInputStream&lt;&#x2F;span&gt;&lt;span&gt;(fis);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span&gt; object = ois.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;readObject&lt;&#x2F;span&gt;&lt;span&gt;(object);
+&lt;&#x2F;span&gt;&lt;span&gt;ois.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zi-ding-xu-lie-hua&quot;&gt;自訂序列化&lt;&#x2F;h2&gt;
+&lt;p&gt;關於序列化有些小細節：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;物件裡的 Field 若沒有實作 Serializable 會導致物件無法序列化&lt;&#x2F;li&gt;
+&lt;li&gt;序列化時，有 static 或 transient 修飾詞的 Field 不會被寫入檔案&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;若想要將這些 Field 序列化，可以透過實作 Serializable 的方法來自訂序列化：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Java&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-Java &quot;&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Student &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;implements &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Serializable &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private static final long &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;serialVersionUID &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;L&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;writeObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ObjectOutputStream &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;oos&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;throws &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;IOException &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		oos.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;defaultWriteObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		oos.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;writeObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(grade.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getChinese&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;());
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;	}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;	
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;readObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ObjectInputStream &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ois&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;throws &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;IOException&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ClassNotFoundException &lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		ois.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;defaultReadObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;		grade &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Grade&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;((&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;) ois.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;readObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;());
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;	}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#343d46;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;defaultWriteObject 和 defaultReadObject 是預設的序列化，後面就是自訂序列化了，把想要做的通通都寫在裡面就可以了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;serialversionuid&quot;&gt;SerialVersionUID&lt;&#x2F;h2&gt;
+&lt;p&gt;在上面的例子中，我為 Student 這個類別加入了 SerialVersionUID ，這個 UID 是用來驗證輸出和讀取的物件是指定的類別，若不是則會拋出 InvalidClassException 。&lt;&#x2F;p&gt;
+&lt;p&gt;一般而言，IDE 會自動生成 UID ，若沒有指定 UID 則會由 JVM 指定。但是推薦手動指定，因為 UID 可能會因為編譯器而不同，導致產生 InvalidClassException 。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh-tw">
+        <title>Java Collection</title>
+        <published>2023-02-22T00:00:00+00:00</published>
+        <updated>2023-02-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/java-collection/"/>
+        <id>https://natsucamellia.github.io/java-collection/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/java-collection/">&lt;p&gt;只會用 Array 嗎？在程式設計中有個專業知識稱為「資料結構」，資料結構可以幫助我們有效率地存取資料。Java Collections 框架就是為此而生，提供了各種實用的功能！&lt;&#x2F;p&gt;
+&lt;p&gt;Java Collections 有兩個主要的介面，分別為 Collection 與 Map ，前者將大量型態相同的元素裝在一起，後者則是儲存多對 Entry（Key-Value），用 Key 來存取 Value，本篇著重介紹 Collection 。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;collection-jie-mian&quot;&gt;Collection 介面&lt;&#x2F;h2&gt;
+&lt;p&gt;Colletion 是 Java 中實作&lt;strong&gt;集合&lt;&#x2F;strong&gt;的介面，宣告了集合所具備的基本方法：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;add(T element)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;remove(T element)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;size()&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;isEmpty()&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;contains(T element)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;...&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;所有子介面都擁有這些方法，以下介紹三個子介面：&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;1-list&quot;&gt;&lt;strong&gt;1. List&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;List 以&lt;strong&gt;索引&lt;&#x2F;strong&gt;來排序元素，可以如陣列存取元素，在 Collection 之外新增了一些有關索引的方法：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;get(int index)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;set(int index, T element)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;indexOf(T element)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;實作的類別有：&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;linkedlist&quot;&gt;LinkedList&lt;&#x2F;h3&gt;
+&lt;p&gt;LinkedList 會在每個元素中紀錄下一個元素的位址。存取時需要從頭遍歷，因此存取中間元素的速度&lt;strong&gt;相對&lt;&#x2F;strong&gt;慢。但增減時只要更改下一個元素的位址即可，所以增減中間元素的速度&lt;strong&gt;相對&lt;&#x2F;strong&gt;快。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;arraylist&quot;&gt;ArrayList&lt;&#x2F;h3&gt;
+&lt;p&gt;ArrayList 和 Array 最大的不同是：ArrayList 可以&lt;strong&gt;動態調整&lt;&#x2F;strong&gt;大小，可以增加或減少元素數量。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;2-set&quot;&gt;&lt;strong&gt;2. Set&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Set 的特色是不允許有重複的元素，元素之間沒有順序，可用的方法大多已定義在 Collection 中，這裡不多解釋。&lt;&#x2F;p&gt;
+&lt;p&gt;實作的類別有：&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hashset&quot;&gt;HashSet&lt;&#x2F;h3&gt;
+&lt;p&gt;HashSet 透過 HashMap 實現，擁有快速的存取速度。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;linkedhashset&quot;&gt;LinkedHashSet&lt;&#x2F;h3&gt;
+&lt;p&gt;基於 HastSet 之上，LinkedHashSet 還會維持元素新增時的順序。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;treeset&quot;&gt;TreeSet&lt;&#x2F;h3&gt;
+&lt;p&gt;TreeSet 會依物件的比較結果來排序元素，但每個元素都必須實作 Comparable 介面才能進行排序。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;3-queue&quot;&gt;&lt;strong&gt;3. Queue&lt;&#x2F;strong&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Queue 是一種特殊的線性資料結構，如字面上的意思，就和排隊一樣，具有 First in, First out (FIFO) 的特性，它只能對頭進行刪除、對尾進行插入。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;queue-jie-mian-fang-fa-jian-yi&quot;&gt;Queue 介面方法（建議）&lt;&#x2F;h3&gt;
+&lt;p&gt;對頭操作，當 Queue 為空時會回傳 &lt;code&gt;null&lt;&#x2F;code&gt; ：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;poll()&lt;&#x2F;code&gt;：刪除第一個元素並回傳。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;peek()&lt;&#x2F;code&gt;：查看第一個元素並回傳。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;對尾操作，當 Queue 滿時回傳 &lt;code&gt;false&lt;&#x2F;code&gt; ：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;offer()&lt;&#x2F;code&gt;：插入一個元素到尾端。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;collection-nei-jian-fang-fa-bu-jian-yi&quot;&gt;Collection 內建方法（不建議）&lt;&#x2F;h3&gt;
+&lt;p&gt;對頭操作，當 Queue 為空時會拋出 Exception ：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;remove()&lt;&#x2F;code&gt;：相當於 &lt;code&gt;poll()&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;element()&lt;&#x2F;code&gt;：相當於 &lt;code&gt;peek()&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;對尾操作，當 Queue 滿時拋出 unchecked Exception ：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;add()&lt;&#x2F;code&gt;：相當於 &lt;code&gt;offer()&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;實作 Queue 的子類別有：&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;linkedlist-1&quot;&gt;LinkedList&lt;&#x2F;h3&gt;
+&lt;p&gt;沒錯，就是上面的 LinkedList ，它也有實作 Queue ，可以當 Queue 用！&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;priorityqueue-interface&quot;&gt;PriorityQueue (Interface)&lt;&#x2F;h3&gt;
+&lt;p&gt;PriorityQueue 可以想像成 Heap，每個元素都有自己的優先度，取出元素時會是優先度最高的元素，因此不具備 FIFO 的特質。此外，為了讓 Queue 比較元素間的優先度，元素必須實作 Comparable 介面，或是在宣告 Queue 的時候加入 Comparator 。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;blockingqueue-interface&quot;&gt;BlockingQueue (Interface)&lt;&#x2F;h3&gt;
+&lt;p&gt;BlockingQueue 除了實作 Queue 的基本功能，還有&lt;strong&gt;阻塞&lt;&#x2F;strong&gt;功能，意思就是說：當我們要從 Queue 中拿一個元素，但是卻&lt;strong&gt;沒有元素&lt;&#x2F;strong&gt;可以拿時，這個執行緒就會&lt;strong&gt;停下來&lt;&#x2F;strong&gt;，直到有元素可以拿為止。有四個方法有阻塞的功能：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;take()&lt;&#x2F;code&gt; ：拿元素，沒元素拿就&lt;strong&gt;等到有為止&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;put()&lt;&#x2F;code&gt; ：插入元素，沒空間放就&lt;strong&gt;等到有為止&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;poll(timeout, unit)&lt;&#x2F;code&gt; ：拿元素，沒元素拿就等&lt;strong&gt;指定時長&lt;&#x2F;strong&gt;直到有元素。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;offer(timeout, unit)&lt;&#x2F;code&gt; ：插入元素，沒空間放就等&lt;strong&gt;指定時長&lt;&#x2F;strong&gt;直到有空間。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;BlockingQueue 可以運用在生產與消費中：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;take()&lt;&#x2F;code&gt; ：消費者購買商品，當商品數量不足時就一直等到生產者做出來為止。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;put()&lt;&#x2F;code&gt; ：生產者製造商品，當商品數量達到上限時就一直等到消費者買為止。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;priorityblockingqueue&quot;&gt;PriorityBlockingQueue&lt;&#x2F;h3&gt;
+&lt;p&gt;繼承了上面兩個介面，PriorityQueue 和 BlockingQueue 。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-tw">
+    <title>NatsuCamellia - Data Structure</title>
+    <subtitle>When camellia blooms in summer.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://natsucamellia.github.io/categories/data-structure/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-10-20T00:00:00+00:00</updated>
+    <id>https://natsucamellia.github.io/categories/data-structure/atom.xml</id>
+    <entry xml:lang="zh-tw">
+        <title>Stack 堆疊</title>
+        <published>2022-10-20T00:00:00+00:00</published>
+        <updated>2022-10-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              NatsuCamellia
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://natsucamellia.github.io/stack/"/>
+        <id>https://natsucamellia.github.io/stack/</id>
+        
+        <content type="html" xml:base="https://natsucamellia.github.io/stack/">&lt;p&gt;Stack 是一種基礎的資料結構，可以拿堆盤子來幫助想像，它的特性是：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;只能在堆疊的最上方新增或刪除元素&lt;&#x2F;li&gt;
+&lt;li&gt;後進先出（Last in first out, LIFO）&lt;&#x2F;li&gt;
+&lt;li&gt;最上方稱為 Top ，底部稱為 Bottom&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;操作有：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Push，新增元素&lt;&#x2F;li&gt;
+&lt;li&gt;Pop，拿出元素&lt;&#x2F;li&gt;
+&lt;li&gt;Peak，查看最上方的元素&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;此外，Java 標準函式庫也有 Stack。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;import java.util.Stack;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;宣告方法為：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Stack&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;T&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; stack = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Stack&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;T&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;1-class&quot;&gt;1. Class&lt;&#x2F;h2&gt;
+&lt;p&gt;首先，先建立 Stack Class。&lt;&#x2F;p&gt;
+&lt;p&gt;我們需要一個陣列來放元素，同時也需要一個數字告訴我們容量才能建立陣列。此外我們還需要一個 Flag 來紀錄最上方元素的 Index。&lt;&#x2F;p&gt;
+&lt;p&gt;先新增 Stack 的屬性：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Stack &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;private&lt;&#x2F;span&gt;&lt;span&gt; int capacity;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;private&lt;&#x2F;span&gt;&lt;span&gt; int data[];
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;private&lt;&#x2F;span&gt;&lt;span&gt; int top = -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;加入 Constructor：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Stack&lt;&#x2F;span&gt;&lt;span&gt;(int capacity) {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.capacity = capacity;
+&lt;&#x2F;span&gt;&lt;span&gt;    data = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt; int[capacity];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;我們可以開始實作功能了。&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;2-functions&quot;&gt;2. Functions&lt;&#x2F;h2&gt;
+&lt;p&gt;首先，我們先實作 Push 來加入元素：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;把 top 往上移，指到一個空位&lt;&#x2F;li&gt;
+&lt;li&gt;把元素填進去這個空位&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; void push(int element) {
+&lt;&#x2F;span&gt;&lt;span&gt;    data[++top] = element;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;接著實作 Pop：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;回傳最上方的元素&lt;&#x2F;li&gt;
+&lt;li&gt;把 top 往下移，讓下面那個元素成為 top&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; int pop() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; data[top--];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;實作 Peak：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;回傳最上方的元素&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; int peak() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; data[top];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;3-state&quot;&gt;3. State&lt;&#x2F;h2&gt;
+&lt;p&gt;由於我們可能在多次 Push Pop 之後可能會忘記 Stack 裝了多少元素，還有多少空間，可能會導致 Stack 滿了仍繼續 Push 產生 Overflow，或是 Stak 空了仍繼續 Pop 產生 Underflow，所以我們引入幾個 State Getter 來取得 Stack 的容量情況。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;isFull&lt;&#x2F;li&gt;
+&lt;li&gt;isEmpty&lt;&#x2F;li&gt;
+&lt;li&gt;size&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Boolean&lt;&#x2F;span&gt;&lt;span&gt; isFull() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; this.top == this.capacity - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Boolean&lt;&#x2F;span&gt;&lt;span&gt; isEmpty() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; this.top == -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; int size() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; top + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#eff1f5;color:#4f5b66;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Stack &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;private&lt;&#x2F;span&gt;&lt;span&gt; int capacity;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;private&lt;&#x2F;span&gt;&lt;span&gt; int data[];
+&lt;&#x2F;span&gt;&lt;span&gt;    int top = -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Constructor
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Stack&lt;&#x2F;span&gt;&lt;span&gt;(int capacity) {
+&lt;&#x2F;span&gt;&lt;span&gt;        this.capacity = capacity;
+&lt;&#x2F;span&gt;&lt;span&gt;        data = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt; int[capacity];
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Push
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; void push(int element) {
+&lt;&#x2F;span&gt;&lt;span&gt;        data[++top] = element;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Pop
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; int pop() {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; data[top--];
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Peak
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; int peak() {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; data[top];
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; isFull
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Boolean&lt;&#x2F;span&gt;&lt;span&gt; isFull() {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; this.top == this.capacity - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; isEmpty
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Boolean&lt;&#x2F;span&gt;&lt;span&gt; isEmpty() {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; this.top == -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; size
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span&gt; int size() {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; top + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>
